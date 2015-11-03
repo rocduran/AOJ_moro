@@ -3,14 +3,14 @@ package ad.uda.moro.ejb.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
-@Entity(name="Servei")
-@Table(name="servei")
+@Entity(name="Parametre")
+@Table(name="parametres")
 
-public class Servei implements Serializable {
+public class Parametre implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	/**
-	 * Class <code><b>Servei</b></code> 
+	 * Class <code><b>Parametre</b></code> 
 	 * @author rduran & mmiret
 	 *
 	 */
@@ -19,14 +19,14 @@ public class Servei implements Serializable {
 	@Column(name = "idTipus", length=11) private int idTipus;
 	@Column(name="descripcio", length=255) private String descripcio;
 	
-	public Servei(int id, int idTipus, String descripcio) {
+	public Parametre(int id, int idTipus, String descripcio) {
 		super();
 		this.id = id;
 		this.idTipus = idTipus;
 		this.descripcio = descripcio;
 	}
 	
-	public Servei(){}
+	public Parametre(){}
 
 	public int getId() {
 		return id;
@@ -54,7 +54,7 @@ public class Servei implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Servei [id=" + id + ", idTipus=" + idTipus + ", descripcio=" + descripcio + "]";
+		return "Parametres [id=" + id + ", idTipus=" + idTipus + ", descripcio=" + descripcio + "]";
 	}
 	
 	
