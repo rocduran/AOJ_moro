@@ -28,6 +28,9 @@ public class CommonUtilities {
 	 * </font></blockquote>
 	 * Returns <b>null</b> if invalid parameters have been specified or if the EJB could not be located.
 	 */
+	
+	//TODO Afegir 3 final statics amb el tipus de servei. Per exemple: 1 = Guia, 2 = Hotel,etc... 
+	
 	public static String getLookupEJBName(String beanName, String interfaceName) {
     	
         String appName = ""; // There is no EAR name
