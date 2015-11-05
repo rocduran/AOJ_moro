@@ -7,3 +7,4 @@ RemoteSystemsTempFiles
 .metadata
 .metadata/*
 .metadata/.mylyn/repositories.xml.zip
+.Moro.jar
