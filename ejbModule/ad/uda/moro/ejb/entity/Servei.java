@@ -4,7 +4,9 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 /**
- * Class <code><b>Servei</b></code>. Entity <code><b>Servei</b></code>. Taula persistency <code><b>servei</b></code>
+ * Class <code><b>Servei</b></code>. 
+ * </br>Entity <code><b>Servei</b></code>. 
+ * </br>Taula persistency <code><b>servei</b></code>
  * @author rduran & mmiret
  *
  */
@@ -22,8 +24,8 @@ public class Servei implements Serializable {
 	
 	/**
 	 * Constructor method amb paràmetres:
-	 * @param id Identificador del servei (PrimaryKey del Entity)
-	 * @param idTipus Identificador del tipus de servei. Per exemple: <blockquote><b>1 = Guia, 2 = Hotel, etc...</b></blockquote>
+	 * @param id 		Identificador del servei (PrimaryKey del Entity)
+	 * @param idTipus 	Identificador del tipus de servei. Per exemple: <blockquote><b>1 = Guia, 2 = Hotel, etc...</b></blockquote>
 	 * @param descripcio Descriu que es el servei en un String.
 	 * @see CommonUtilities
 	 */
@@ -41,7 +43,7 @@ public class Servei implements Serializable {
 
 	/**
 	 * Getter de identificador únic del servei:
-	 * @return El identificador únic del servei
+	 * @return {Integer} El identificador únic del servei
 	 */
 	public int getId() {
 		return id;
@@ -49,7 +51,7 @@ public class Servei implements Serializable {
 	
 	/**
 	 * Setter de identificador únic del servei:
-	 * @param Identificador únic del servei
+	 * @param id {Integer} Identificador únic del servei
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -57,7 +59,7 @@ public class Servei implements Serializable {
 
 	/**
 	 * Getter de idTipus de servei:
-	 * @return L'identificador del tipus de servei.
+	 * @return {Integer} L'identificador del tipus de servei.
 	 */
 	public int getIdTipus() {
 		return idTipus;
@@ -65,7 +67,7 @@ public class Servei implements Serializable {
 
 	/**
 	 * Setter de idTipus de servei:
-	 * @param identificador del tipus de servei
+	 * @param idTipus {Integer} Identificador del tipus de servei
 	 */
 	public void setIdTipus(int idTipus) {
 		this.idTipus = idTipus;
@@ -73,21 +75,22 @@ public class Servei implements Serializable {
 
 	/**
 	 * Getter de la descripcio de servei:
-	 * @return La descripcio del servei, per exemple: "<code><b>Guia Paku</b></code>"
+	 * @return {String} La descripcio del servei, per exemple: "<code><b>Guia Paku</b></code>"
 	 */
 	public String getDescripcio() {
 		return descripcio;
 	}
 	/**
 	 * Setter de idTipus de servei:
-	 * @param identificador del tipus de servei
+	 * @param descripcio {String} La descripcio del servei, per exemple: "<code><b>Guia Paku</b></code>"
 	 */
 	public void setDescripcio(String descripcio) {
 		this.descripcio = descripcio;
 	}
 
 	/**
-	 * Mètode toString de Servei per possibles debuggings.
+	 * Mètode toString del Servei per a possibles debuggings
+	 * @return {String} Representació textual del objecte Servei
 	 */
 	@Override
 	public String toString() {
