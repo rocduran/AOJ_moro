@@ -1,8 +1,9 @@
-.classpath
-
-/bin/
-
+metadata
+.packages
 .DS_Store
 RemoteSystemsTempFiles
-/build/
+.classpath
+.project
+.metadata
 .metadata/*
+.metadata/.mylyn/repositories.xml.zip
