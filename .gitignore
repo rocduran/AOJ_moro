@@ -10,3 +10,4 @@ RemoteSystemsTempFiles
 .Moro.jar
 ejbModule/.DS_Store
 ejbModule/META-INF/.DS_Store
+/build/

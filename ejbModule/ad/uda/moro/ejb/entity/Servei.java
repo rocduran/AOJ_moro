@@ -5,9 +5,9 @@ import javax.persistence.*;
 
 /**
  * Class <code><b>Servei</b></code>. 
- * </br>Entity <code><b>Servei</b></code>. 
- * </br>Taula persistency <code><b>servei</b></code>
- * @author rduran & mmiret
+ * <br>Entity <code><b>Servei</b></code>. 
+ * <br>Taula persistency <code><b>servei</b></code>
+ * @author rduran &amp; mmiret
  *
  */
 
@@ -23,11 +23,11 @@ public class Servei implements Serializable {
 	@Column(name="descripcio", length=255) private String descripcio;
 	
 	/**
-	 * Constructor method amb paràmetres:
-	 * @param id 		Identificador del servei (PrimaryKey del Entity)
-	 * @param idTipus 	Identificador del tipus de servei. Per exemple: <blockquote><b>1 = Guia, 2 = Hotel, etc...</b></blockquote>
-	 * @param descripcio Descriu que es el servei en un String.
-	 * @see CommonUtilities
+	 * Constructor method <blockquote><b>Servei</b></blockquote>  amb paràmetres:
+	 * @param id 		{Integer} Identificador del servei (PrimaryKey del Entity)
+	 * @param idTipus 	{Integer} Identificador del tipus de servei. Per exemple: <blockquote><b>1 = Guia, 2 = Hotel, etc...</b></blockquote>
+	 * @param descripcio {String} Descriu que es el servei en un String.
+	 * @see ad.uda.moro.CommonUtilities
 	 */
 	public Servei(int id, int idTipus, String descripcio) {
 		super();
@@ -37,12 +37,12 @@ public class Servei implements Serializable {
 	}
 	
 	/**
-	 * Constructor method sense parametres.
+	 * Constructor method <blockquote><b>Servei</b></blockquote>  sense parametres.
 	 */
 	public Servei(){}
 
 	/**
-	 * Getter de identificador únic del servei:
+	 * Getter de identificador únic del Servei:
 	 * @return {Integer} El identificador únic del servei
 	 */
 	public int getId() {
@@ -50,7 +50,7 @@ public class Servei implements Serializable {
 	}
 	
 	/**
-	 * Setter de identificador únic del servei:
+	 * Setter de identificador únic del Servei:
 	 * @param id {Integer} Identificador únic del servei
 	 */
 	public void setId(int id) {
@@ -81,7 +81,7 @@ public class Servei implements Serializable {
 		return descripcio;
 	}
 	/**
-	 * Setter de idTipus de servei:
+	 * Setter de la descripcio de servei:
 	 * @param descripcio {String} La descripcio del servei, per exemple: "<code><b>Guia Paku</b></code>"
 	 */
 	public void setDescripcio(String descripcio) {
@@ -90,7 +90,7 @@ public class Servei implements Serializable {
 
 	/**
 	 * Mètode toString del Servei per a possibles debuggings
-	 * @return {String} Representació textual del objecte Servei
+	 * @return {String} Representació textual de l'objecte Servei
 	 */
 	@Override
 	public String toString() {

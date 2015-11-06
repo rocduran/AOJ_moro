@@ -5,9 +5,9 @@ import javax.persistence.*;
 
 /**
 * Class <code><b>Dossier</b></code>.  
-* </br>Entity <code><b>Servei</b></code>. 
-* </br>Taula persistency <code><b>servei</b></code> 
-* @author rduran & mmiret
+* <br>Entity <code><b>Servei</b></code>. 
+* <br>Taula persistency <code><b>servei</b></code> 
+* @author rduran &amp; mmiret
 */
 	
 @Entity(name="Dossier")
@@ -26,7 +26,6 @@ public class Dossier implements Serializable {
 	 * @param  id         Identificador únic del dossier
 	 * @param  preu       Preu del dossier
 	 * @param  descripcio Nom del dossier
-	 * @return            Instància de Dossier amb els paràmetres especificats
 	 */
 	public Dossier(int id, int preu, String descripcio) {
 		super();
@@ -36,7 +35,7 @@ public class Dossier implements Serializable {
 	}
 	
 	/**
-	 * Constructor method de <blockquote><b>Dosier</b></blockquote> sense paràmetres:
+	 * Constructor method de <blockquote><b>Dossier</b></blockquote> sense paràmetres:
 	 */
 	public Dossier(){}
 
@@ -90,7 +89,7 @@ public class Dossier implements Serializable {
 
 	/**
 	 * Mètode toString del Dossier per a possibles debuggings
-	 * @return {String} Representació textual del objecte Dossier
+	 * @return {String} Representació textual de l'objecte Dossier
 	 */
 	@Override
 	public String toString() {

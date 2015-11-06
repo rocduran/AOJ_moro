@@ -18,14 +18,14 @@ public class CommonUtilities {
 	 * Example: "<code><b>ad.playground.ejb.session.SomeService</b></code>". This name can be obtained by
 	 * using the expression:
 	 * <blockquote>
-	 *     <font color="navy" size="3"><code><b>
-	 *     ClassName.class.getName(); -- <font color="black">Example: </font><font color="maroon">SomeServiceRemote.class.getname();
-	 *     </font></b></code></font>
+	 *     <code><b>
+	 *     ClassName.class.getName(); -- Example: SomeServiceRemote.class.getname();
+	 *     </b></code>
 	 * </blockquote>
-	 * @return The name as it can be used to perform a remote lookup.<br/>
-	 * Example: <blockquote><font color="maroon" size="3">
+	 * @return The name as it can be used to perform a remote lookup.<br>
+	 * Example: <blockquote>
 	 * <code><b>ejb:/PlayGroundEJB//SomeServiceBean!ad.playground.ejb.session.SomeServiceRemote</b></code>
-	 * </font></blockquote>
+	 * </blockquote>
 	 * Returns <b>null</b> if invalid parameters have been specified or if the EJB could not be located.
 	 */
 	
