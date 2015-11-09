@@ -1,13 +1,7 @@
 metadata
-.packages
 .DS_Store
-RemoteSystemsTempFiles
 .classpath
-.project
-.metadata
-.metadata/*
-.metadata/.mylyn/repositories.xml.zip
-.Moro.jar
+
 ejbModule/.DS_Store
 ejbModule/META-INF/.DS_Store
-/build/
+
