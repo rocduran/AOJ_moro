@@ -21,27 +21,27 @@ import ad.uda.moro.ejb.entity.ActivitatDossier;
 @Remote(EnquestesServiceRemote.class)
 @LocalBean
 public class EnquestesServiceBean implements EnquestesServiceRemote {
-	
+
 	@PersistenceContext(unitName = "MoroPU")
-    private EntityManager em;
-	
+	private EntityManager em;
+
 	@Override
 	public String helloWorld() {
 		Date today = new Date();
-		return "Today is: "+today.toString();
+		return "Today is: " + today.toString();
 	}
 
 	@Override
 	public ActivitatDossier getActivitatDossier(int id) throws MoroException {
 		// Verify parameter:
-				if (id < 0)
-					throw new MoroException("The parameter is negative !");
-				// Get the Language instance:
-				try {
-					return em.find(ActivitatDossier.class, id);
-				} catch (Exception ex) {
-					throw new MoroException("Persistence error. Details: " + ex.getMessage());
-				}
+		if (id < 0)
+			throw new MoroException("The parameter is negative !");
+
+		try {
+			return em.find(ActivitatDossier.class, id);
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
 	}
 
 	@Override
@@ -51,46 +51,73 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 			throw new MoroException("The specified activitatDossier parameter is null");
 		if (!activitatDossier.hasValidInformation())
 			throw new MoroException("The specified activitatDossier parameter contains invalid information");
-		if (this.getActivitatDossier(activitatDossier.getId()) != null) // Language exists
+		if (this.getActivitatDossier(activitatDossier.getId()) != null) 
+																		
 			throw new MoroException("An actvitatDossier with code [" + activitatDossier.getId() + "] already exists");
-				
+
 		// Add the instance:
 		try {
-					em.persist(activitatDossier);
+			em.persist(activitatDossier);
 		} catch (Exception ex) {
 			throw new MoroException("Persistence error. Details: " + ex.getMessage());
 		}
-		
+
 	}
 
 	@Override
 	public void updateActivitatDossier(ActivitatDossier activitatDossier) throws MoroException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteActivitatDossier(int id) throws MoroException {
-		// TODO Auto-generated method stub
-		
+		// Verify parameter:
+		if (id < 0)
+			throw new MoroException("The specified id parameter is null");
+		if (!ActivitatDossier.isValidActivitatDossierId(id))
+			throw new MoroException("The specified code parameter [" + id + "] is not a valid code");
+		ActivitatDossier a = this.getActivitatDossier(id);
+
+		if (a == null)
+			throw new MoroException("An ActivitatDossier with code [" + id + "] does not exist");
+
+		try {
+			em.remove(a);
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
+
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public ActivitatDossier[] getActivitatDossierList() throws MoroException {
 		// Create a named query to obtain the collection of languages:
-				Query query = em.createNamedQuery("allActivitatDossier"); // The query to use and specified in Entity "Language"
-				List<ActivitatDossier> actDos = null; // Will contain the query result
-				try {
-					actDos = (List<ActivitatDossier>)query.getResultList(); // Get the List
-					if (actDos == null) return null; // Result could be null
-					if (actDos.size() == 0) return null; // Result could be empty
-					return actDos.toArray(new ActivitatDossier[actDos.size()]); // return the collection as an array
-				} catch (NoResultException ex) { // In case this exception is thrown...
-					return null;
-				} catch (Exception ex) { // Any other error
-					throw new MoroException("Persistence error. Details: " + ex.getMessage());
-				}
+		Query query = em.createNamedQuery("allActivitatDossier"); // The query
+																	// to use
+																	// and
+																	// specified
+																	// in Entity
+																	// "Language"
+		List<ActivitatDossier> actDos = null; // Will contain the query result
+		try {
+			actDos = (List<ActivitatDossier>) query.getResultList(); // Get the
+																		// List
+			if (actDos == null)
+				return null; // Result could be null
+			if (actDos.size() == 0)
+				return null; // Result could be empty
+			return actDos.toArray(new ActivitatDossier[actDos.size()]); // return
+																		// the
+																		// collection
+																		// as an
+																		// array
+		} catch (NoResultException ex) { // In case this exception is thrown...
+			return null;
+		} catch (Exception ex) { // Any other error
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
 	}
 
 }
