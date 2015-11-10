@@ -46,7 +46,7 @@ public interface EnquestesServiceRemote {
 	
 	/**
 	 * Borra una instancia d' <code>ActivitatDossier</code> de la capa de persistencia. 
-	 * @param {Integer} id L'identificador d'<code>ActivitatDossier</code> a borrar.
+	 * @param id {Integer} L'identificador d'<code>ActivitatDossier</code> a borrar.
 	 * @throws MoroException Si un establiment amb l'identificador especificat no existeix o o si hi ha un error de la capa de persistencia.
 	 */
 	public void deleteActivitatDossier(int id) throws MoroException;
