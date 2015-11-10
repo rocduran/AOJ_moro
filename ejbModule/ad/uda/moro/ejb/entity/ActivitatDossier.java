@@ -17,6 +17,7 @@ public class ActivitatDossier implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	
 	@Id @Column(name ="id", length=11) private int id;
 	@Column(name = "idDossier", length=11) private int idDossier;
 	@Column(name="idServei", length=11) private int idServei;
