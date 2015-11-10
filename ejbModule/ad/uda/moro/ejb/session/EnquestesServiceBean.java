@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.ejb.LocalBean;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import ad.uda.moro.MoroException;
 import ad.uda.moro.ejb.entity.ActivitatDossier;
@@ -16,7 +18,10 @@ import ad.uda.moro.ejb.entity.ActivitatDossier;
 @Remote(EnquestesServiceRemote.class)
 @LocalBean
 public class EnquestesServiceBean implements EnquestesServiceRemote {
-
+	
+	@PersistenceContext(unitName = "MoroPU")
+    private EntityManager em;
+	
 	@Override
 	public String helloWorld() {
 		Date today = new Date();
@@ -25,8 +30,16 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 
 	@Override
 	public ActivitatDossier getActivitatDossier(int id) throws MoroException {
-		// TODO Auto-generated method stub
-		return null;
+		// Verify parameter:
+				if (id < 0)
+					throw new MoroException("The parameter is negative !");
+				System.out.println("HOLA");
+				// Get the Language instance:
+				try {
+					return em.find(ActivitatDossier.class, id);
+				} catch (Exception ex) {
+					throw new MoroException("Persistence error. Details: " + ex.getMessage());
+				}
 	}
 
 	@Override
