@@ -6,6 +6,9 @@ import javax.ejb.LocalBean;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
+import ad.uda.moro.MoroException;
+import ad.uda.moro.ejb.entity.ActivitatDossier;
+
 /**
  * Session Bean implementation class EnquestesServiceBean
  */
@@ -14,17 +17,40 @@ import javax.ejb.Stateless;
 @LocalBean
 public class EnquestesServiceBean implements EnquestesServiceRemote {
 
-    /**
-     * Default constructor. 
-     */
-    public EnquestesServiceBean() {
-        // TODO Auto-generated constructor stub
-    }
-
 	@Override
 	public String helloWorld() {
 		Date today = new Date();
 		return "Today is: "+today.toString();
+	}
+
+	@Override
+	public ActivitatDossier getActivitatDossier(int id) throws MoroException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addActivitatDossier(ActivitatDossier activitatDossier) throws MoroException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateActivitatDossier(ActivitatDossier activitatDossier) throws MoroException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteActivitatDossier(int id) throws MoroException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ActivitatDossier[] getEstablishmentListOrderedByName() throws MoroException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

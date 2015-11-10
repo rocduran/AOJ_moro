@@ -22,8 +22,8 @@ public class Dossier implements Serializable {
 	@Column(name="descripcio", length=255) private String descripcio;
 	
 	/**
-	 * Constructor method de <blockquote><b>Dossier</b></blockquote> amb paràmetres:
-	 * @param  id         Identificador únic del dossier
+	 * Constructor method de <blockquote><b>Dossier</b></blockquote> amb parametres:
+	 * @param  id         Identificador unic del dossier
 	 * @param  preu       Preu del dossier
 	 * @param  descripcio Nom del dossier
 	 */
@@ -35,21 +35,21 @@ public class Dossier implements Serializable {
 	}
 	
 	/**
-	 * Constructor method de <blockquote><b>Dossier</b></blockquote> sense paràmetres:
+	 * Constructor method de <blockquote><b>Dossier</b></blockquote> sense parametres:
 	 */
 	public Dossier(){}
 
 	/**
-	 * Getter de l'identificador únic de Dossier
-	 * @return {Integer} Identificador únic o PrimaryKey del Dossier
+	 * Getter de l'identificador unic de Dossier
+	 * @return {Integer} Identificador unic o PrimaryKey del Dossier
 	 */
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * Setter de l'identificador únic de Dossier
-	 * @param id {Integer} Identificador únic o PrimaryKey del Dossier
+	 * Setter de l'identificador unic de Dossier
+	 * @param id {Integer} Identificador unic o PrimaryKey del Dossier
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -88,8 +88,8 @@ public class Dossier implements Serializable {
 	}
 
 	/**
-	 * Mètode toString del Dossier per a possibles debuggings
-	 * @return {String} Representació textual de l'objecte Dossier
+	 * Metode toString del Dossier per a possibles debuggings
+	 * @return {String} Representacio textual de l'objecte Dossier
 	 */
 	@Override
 	public String toString() {

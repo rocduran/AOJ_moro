@@ -25,12 +25,12 @@ public class Valoracio implements Serializable {
 	@Column(name="valor", length=11) private int valor;
 	
 	/**
-	 * Constructor method de <blockquote><b>Valoració</b></blockquote> amb paràmetres:
-	 * @param  id        {Integer} Identificador únic d'una valoració
-	 * @param  idDossier {Integer} Identificador únic d'un dossier
-	 * @param  idServei  {Integer} Identificador únic d'un servei
-	 * @param  idParam   {Integer} Identificador únic d'un parametre
-	 * @param  valor     {Integer} Puntuació donada al parametre d'un servei d'un dossier. Valor enter entre 0 i 5.
+	 * Constructor method de <blockquote><b>Valoració</b></blockquote> amb parametres:
+	 * @param  id        {Integer} Identificador unic d'una valoració
+	 * @param  idDossier {Integer} Identificador unic d'un dossier
+	 * @param  idServei  {Integer} Identificador unic d'un servei
+	 * @param  idParam   {Integer} Identificador unic d'un parametre
+	 * @param  valor     {Integer} Puntuacio donada al parametre d'un servei d'un dossier. Valor enter entre 0 i 5.
 	 */
 	public Valoracio(int id, int idDossier, int idServei, int idParam, int valor) {
 		super();
@@ -48,86 +48,86 @@ public class Valoracio implements Serializable {
 
 
 	/**
-	 * Getter de l'identificador únic de la Valoració.
-	 * @return {Integer} Identificador únic de la Valoració.
+	 * Getter de l'identificador unic de la Valoracio.
+	 * @return {Integer} Identificador unic de la Valoracio.
 	 */
 	public int getId() {
 		return id;
 	}
 	/**
-	 * Setter de l'identificador únic de la Valoració.
-	 * @param id {Integer} Identificador únic de la Valoració.
+	 * Setter de l'identificador unic de la Valoracio.
+	 * @param id {Integer} Identificador unic de la Valoracio.
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
 	/**
-	 * Getter de l'identificador únic de Dossier
-	 * @return {Integer} Identificador únic o PrimaryKey del Dossier
+	 * Getter de l'identificador unic de Dossier
+	 * @return {Integer} Identificador unic o PrimaryKey del Dossier
 	 */
 	public int getIdDossier() {
 		return idDossier;
 	}
 	/**
-	 * Setter de l'identificador únic de Dossier
-	 * @param idDossier {Integer} Identificador únic o PrimaryKey del Dossier
+	 * Setter de l'identificador unic de Dossier
+	 * @param idDossier {Integer} Identificador unic o PrimaryKey del Dossier
 	 */
 	public void setIdDossier(int idDossier) {
 		this.idDossier = idDossier;
 	}
 
 	/**
-	 * Getter de identificador únic del Servei:
-	 * @return {Integer} El identificador únic del servei
+	 * Getter de identificador unic del Servei:
+	 * @return {Integer} El identificador unic del servei
 	 */
 	public int getIdServei() {
 		return idServei;
 	}
 
 	/**
-	 * Setter de identificador únic del Servei:
-	 * @param idServei {Integer} Identificador únic del servei
+	 * Setter de identificador unic del Servei:
+	 * @param idServei {Integer} Identificador unic del servei
 	 */
 	public void setIdServei(int idServei) {
 		this.idServei = idServei;
 	}
 
 	/**
-	 * Getter de l'identificador únic del Parametre:
-	 * @return {Integer} L'identificador únic del parametre
+	 * Getter de l'identificador unic del Parametre:
+	 * @return {Integer} L'identificador unic del parametre
 	 */
 	public int getIdParam() {
 		return idParam;
 	}
 
 	/**
-	 * Setter de l'identificador únic del Parametre:
-	 * @param idParam {Integer} Identificador únic del parametre
+	 * Setter de l'identificador unic del Parametre:
+	 * @param idParam {Integer} Identificador unic del parametre
 	 */
 	public void setIdParam(int idParam) {
 		this.idParam = idParam;
 	}
 
 	/**
-	 * Getter del valor de Valoració
-	 * @return {Integer} {Integer} Puntuació donada al parametre d'un servei d'un dossier. Valor enter entre 0 i 5.
+	 * Getter del valor de Valoracio
+	 * @return {Integer} {Integer} Puntuacio donada al parametre d'un servei d'un dossier. Valor enter entre 0 i 5.
 	 */
 	public int getValor() {
 		return valor;
 	}
 
 	/**
-	 * Setter del valor de la Valoració
-	 * @param valor {Integer} Puntuació donada al parametre d'un servei d'un dossier. Valor enter entre 0 i 5.
+	 * Setter del valor de la Valoracio
+	 * @param valor {Integer} Puntuacio donada al parametre d'un servei d'un dossier. Valor enter entre 0 i 5.
 	 */
 	public void setValor(int valor) {
 		this.valor = valor;
 	}
 
 	/**
-	 * Mètode toString del Parametre per a possibles debuggings
-	 * @return {String} Representació textual de l'objecte Parametre
+	 * Metode toString del Parametre per a possibles debuggings
+	 * @return {String} Representacio textual de l'objecte Parametre
 	 */
 	@Override
 	public String toString() {

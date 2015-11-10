@@ -23,7 +23,7 @@ public class Servei implements Serializable {
 	@Column(name="descripcio", length=255) private String descripcio;
 	
 	/**
-	 * Constructor method <blockquote><b>Servei</b></blockquote>  amb paràmetres:
+	 * Constructor method <blockquote><b>Servei</b></blockquote>  amb parametres:
 	 * @param id 		{Integer} Identificador del servei (PrimaryKey del Entity)
 	 * @param idTipus 	{Integer} Identificador del tipus de servei. Per exemple: <blockquote><b>1 = Guia, 2 = Hotel, etc...</b></blockquote>
 	 * @param descripcio {String} Descriu que es el servei en un String.
@@ -42,16 +42,16 @@ public class Servei implements Serializable {
 	public Servei(){}
 
 	/**
-	 * Getter de identificador únic del Servei:
-	 * @return {Integer} El identificador únic del servei
+	 * Getter de identificador unic del Servei:
+	 * @return {Integer} El identificador unic del servei
 	 */
 	public int getId() {
 		return id;
 	}
 	
 	/**
-	 * Setter de identificador únic del Servei:
-	 * @param id {Integer} Identificador únic del servei
+	 * Setter de identificador unic del Servei:
+	 * @param id {Integer} Identificador unic del servei
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -89,8 +89,8 @@ public class Servei implements Serializable {
 	}
 
 	/**
-	 * Mètode toString del Servei per a possibles debuggings
-	 * @return {String} Representació textual de l'objecte Servei
+	 * Metode toString del Servei per a possibles debuggings
+	 * @return {String} Representacio textual de l'objecte Servei
 	 */
 	@Override
 	public String toString() {

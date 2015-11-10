@@ -22,7 +22,7 @@ public class ActivitatDossier implements Serializable {
 	@Column(name="idServei", length=11) private int idServei;
 	
 	/**
-	 * Constructor method de <blockquote><b>ActivitatDossier</b></blockquote> amb paràmetres:
+	 * Constructor method de <blockquote><b>ActivitatDossier</b></blockquote> amb parametres:
 	 * @param id 	{Integer} Identificador únic de la relació
 	 * @param idDossier	{Integer} Identificador d'un dossier.
 	 * @param idServei {Integer} Identificador d'un servei.
@@ -35,61 +35,61 @@ public class ActivitatDossier implements Serializable {
 	}
 	
 	/**
-	 * Constructor method de <blockquote><b>ActivitatDossier</b></blockquote> sense paràmetres:
+	 * Constructor method de <blockquote><b>ActivitatDossier</b></blockquote> sense parametres:
 	 */
 	public ActivitatDossier(){}
 
 	/**
-	 * Getter de l'identificador únic de ActivitatDossier
-	 * @return {Integer} Identificador únic o PrimaryKey del ActivitatDossier
+	 * Getter de l'identificador unic de ActivitatDossier
+	 * @return {Integer} Identificador unic o PrimaryKey del ActivitatDossier
 	 */
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * Setter de l'identificador únic de ActivitatDossier
-	 * @param id {Integer} Identificador únic o PrimaryKey del ActivitatDossier
+	 * Setter de l'identificador unic de ActivitatDossier
+	 * @param id {Integer} Identificador unic o PrimaryKey del ActivitatDossier
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
 	/**
-	 * Getter de l'identificador únic d'un Dossier
-	 * @return {Integer} Identificador únic o PrimaryKey del Dossier
+	 * Getter de l'identificador unic d'un Dossier
+	 * @return {Integer} Identificador unic o PrimaryKey del Dossier
 	 */
 	public int getIdDossier() {
 		return idDossier;
 	}
 
 	/**
-	 * Setter de l'identificador únic d'un Dossier
-	 * @param idDossier {Integer} Identificador únic o PrimaryKey del Dossier
+	 * Setter de l'identificador unic d'un Dossier
+	 * @param idDossier {Integer} Identificador unic o PrimaryKey del Dossier
 	 */
 	public void setIdDossier(int idDossier) {
 		this.idDossier = idDossier;
 	}
 
 	/**
-	 * Getter de identificador únic d'un Servei:
-	 * @return {Integer} El identificador únic d'un servei
+	 * Getter de identificador unic d'un Servei:
+	 * @return {Integer} El identificador unic d'un servei
 	 */
 	public int getIdServei() {
 		return idServei;
 	}
 
 	/**
-	 * Setter de identificador únic d'un Servei:
-	 * @param idServei {Integer} Identificador únic d'un servei
+	 * Setter de identificador unic d'un Servei:
+	 * @param idServei {Integer} Identificador unic d'un servei
 	 */
 	public void setIdServei(int idServei) {
 		this.idServei = idServei;
 	}
 
 	/**
-	 * Mètode toString del ActivitatDossier per a possibles debuggings
-	 * @return {String} Representació textual de l'objecte ActivitatDossier
+	 * Metode toString del ActivitatDossier per a possibles debuggings
+	 * @return {String} Representacio textual de l'objecte ActivitatDossier
 	 */
 	@Override
 	public String toString() {

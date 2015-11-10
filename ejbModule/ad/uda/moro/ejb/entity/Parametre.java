@@ -22,8 +22,8 @@ public class Parametre implements Serializable {
 	@Column(name="descripcio", length=255) private String descripcio;
 	
 	/**
-	 * Constructor method de <blockquote><b>Parametre</b></blockquote> amb paràmetres:
-	 * @param id 	{Integer} Identificador únic de la relació
+	 * Constructor method de <blockquote><b>Parametre</b></blockquote> amb parametres:
+	 * @param id 	{Integer} Identificador unic de la relacio
 	 * @param idTipus	{Integer} Identificador del tipus de servei. Per exemple: <blockquote><b>1 = Guia, 2 = Hotel, etc...</b></blockquote>.
 	 * @param Descripcio {String} Descriu que es el parametre en un String.
 	 */
@@ -40,16 +40,16 @@ public class Parametre implements Serializable {
 	public Parametre(){}
 
 	/**
-	 * Getter de l'identificador únic del Parametre:
-	 * @return {Integer} L'identificador únic del parametre
+	 * Getter de l'identificador unic del Parametre:
+	 * @return {Integer} L'identificador unic del parametre
 	 */
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * Setter de l'identificador únic del Parametre:
-	 * @param id {Integer} Identificador únic del parametre
+	 * Setter de l'identificador unic del Parametre:
+	 * @param id {Integer} Identificador unic del parametre
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -80,7 +80,7 @@ public class Parametre implements Serializable {
 	}
 
 	/**
-	 * Setter de la descripció de Parametre:
+	 * Setter de la descripcio de Parametre:
 	 * @param descripcio {String} La descripcio del Parametre, per exemple: "<code><b>Amabilitat</b></code>"
 	 */
 	public void setDescripcio(String descripcio) {
@@ -88,8 +88,8 @@ public class Parametre implements Serializable {
 	}
 
 	/**
-	 * Mètode toString del Parametre per a possibles debuggings
-	 * @return {String} Representació textual de l'objecte Parametre
+	 * Metode toString del Parametre per a possibles debuggings
+	 * @return {String} Representacio textual de l'objecte Parametre
 	 */
 	@Override
 	public String toString() {
