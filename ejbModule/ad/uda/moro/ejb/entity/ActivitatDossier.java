@@ -12,6 +12,12 @@ import javax.persistence.*;
 
 @Entity(name="ActivitatDossier")
 @Table(name="activitatdossier")
+@NamedQueries ( {
+	@NamedQuery (
+			name = "allActivitatDossier",
+			query = "FROM ActivitatDossier activitatdossier ORDER BY activitatdossier.id"
+			)
+})
 
 public class ActivitatDossier implements Serializable {
 
@@ -95,6 +101,10 @@ public class ActivitatDossier implements Serializable {
 	@Override
 	public String toString() {
 		return "ActivitatDossier [id=" + id + ", idDossier=" + idDossier + ", idServei=" + idServei + "]";
+	}
+
+	public boolean hasValidInformation() {
+		return (this.id >= 0 & this.idDossier >= 0 & this.idServei >= 0);
 	}
 		
 	

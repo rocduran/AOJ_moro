@@ -1,5 +1,7 @@
 package ad.uda.moro.ejb.session;
 
+import java.util.ArrayList;
+
 import javax.ejb.Remote;
 
 import ad.uda.moro.MoroException;
@@ -63,7 +65,7 @@ public interface EnquestesServiceRemote {
 	 * a la capa de persistencia.
 	 * @throws MoroException Si hi ha un error de la capa de persistencia.
 	 */
-	public ActivitatDossier[] getEstablishmentListOrderedByName() throws MoroException;
+	public ActivitatDossier[] getActivitatDossierList() throws MoroException;
 	
 	//TODO Altres (crud de tots perque som els putos amos).
 }
