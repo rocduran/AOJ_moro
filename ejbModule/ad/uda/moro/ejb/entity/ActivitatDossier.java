@@ -15,7 +15,11 @@ import javax.persistence.*;
 @NamedQueries ( {
 	@NamedQuery (
 			name = "allActivitatDossier",
-			query = "FROM ActivitatDossier activitatdossier ORDER BY activitatdossier.id"
+			query = "FROM ActivitatDossier ad ORDER BY ad.id"
+			),
+	@NamedQuery (
+			name = "allServeisIdByDossierId",
+			query = "SELECT idServei FROM ActivitatDossier ad WHERE ad.idDossier = :idDossier"
 			)
 })
 

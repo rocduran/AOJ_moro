@@ -13,6 +13,12 @@ import javax.persistence.*;
 
 @Entity(name="Servei")
 @Table(name="servei")
+@NamedQueries ( {
+	@NamedQuery (
+			name = "serveiById",
+			query = "FROM Servei s WHERE s.id = :id"
+			)
+})
 
 public class Servei implements Serializable {
 

@@ -1,11 +1,10 @@
 package ad.uda.moro.ejb.session;
 
-import java.util.ArrayList;
-
 import javax.ejb.Remote;
 
 import ad.uda.moro.MoroException;
 import ad.uda.moro.ejb.entity.ActivitatDossier;
+import ad.uda.moro.ejb.entity.Servei;
 
 @Remote
 public interface EnquestesServiceRemote {
@@ -66,6 +65,11 @@ public interface EnquestesServiceRemote {
 	 * @throws MoroException Si hi ha un error de la capa de persistencia.
 	 */
 	public ActivitatDossier[] getActivitatDossierList() throws MoroException;
-	
-	//TODO Altres (crud de tots perque som els putos amos).
+	/**
+	 * Retorna totes les instancies de <code>Servei</code> d'un dossier amb idDossier = id
+	 * @return {Servei[]} un array d'instances de <code>Servei</code> o <b>null</b> si no en hi cap o no existeix el Dossier
+	 * amb idDossier = dossier
+	 * @throws MoroException
+	 */
+	public Servei[] getServeisDossierList(int idDossier) throws MoroException;
 }
