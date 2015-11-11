@@ -66,7 +66,20 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 
 	@Override
 	public void updateActivitatDossier(ActivitatDossier activitatDossier) throws MoroException {
-		// TODO Auto-generated method stub
+		// Check parameter:
+    	if (activitatDossier == null)
+    		throw new MoroException("The specified activitatDossier parameter is null");
+    	if (!activitatDossier.hasValidInformation())
+    		throw new MoroException("The information in the specified activitatDossier parameter with id [" + activitatDossier.getId() + "] is invalid");
+    	if (this.getActivitatDossier(activitatDossier.getId()) == null)
+    		throw new MoroException("The specified activitat code [" + activitatDossier.getId() + "] does not represent an existent ActivitatDossier instance");
+    	
+    	// Update the Establishment instance:
+    	try {
+    		em.merge(activitatDossier);
+    	} catch (Exception ex) {
+    		throw new MoroException("Persistence error. Details: " + ex.getMessage());
+    	}
 
 	}
 
@@ -93,31 +106,19 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 	@SuppressWarnings("unchecked")
 	@Override
 	public ActivitatDossier[] getActivitatDossierList() throws MoroException {
-		// Create a named query to obtain the collection of languages:
-		Query query = em.createNamedQuery("allActivitatDossier"); // The query
-																	// to use
-																	// and
-																	// specified
-																	// in Entity
-																	// "Language"
-		List<ActivitatDossier> actDos = null; // Will contain the query result
+		Query query = em.createNamedQuery("allActivitatDossier"); 
+		List<ActivitatDossier> actDos = null;
 		try {
-			actDos = (List<ActivitatDossier>) query.getResultList(); // Get the
-																		// List
+			actDos = (List<ActivitatDossier>) query.getResultList(); 
 			if (actDos == null)
-				return null; // Result could be null
+				return null; 
 			if (actDos.size() == 0)
-				return null; // Result could be empty
-			return actDos.toArray(new ActivitatDossier[actDos.size()]); // return
-																		// the
-																		// collection
-																		// as an
-																		// array
-		} catch (NoResultException ex) { // In case this exception is thrown...
+				return null;
+			return actDos.toArray(new ActivitatDossier[actDos.size()]); 
+		} catch (NoResultException ex) { 
 			return null;
-		} catch (Exception ex) { // Any other error
+		} catch (Exception ex) { 
 			throw new MoroException("Persistence error. Details: " + ex.getMessage());
 		}
 	}
-
 }
