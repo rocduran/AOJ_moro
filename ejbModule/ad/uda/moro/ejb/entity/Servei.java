@@ -25,7 +25,7 @@ public class Servei implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id @GeneratedValue (strategy = GenerationType.AUTO) @Column(name ="id", length=11) private int id;
+	@Id @GeneratedValue (strategy = GenerationType.IDENTITY) @Column(name ="id", length=11) private int id;
 	@Column(name = "idTipus", length=11) private int idTipus;
 	@Column(name="descripcio", length=255) private String descripcio;
 	
@@ -36,9 +36,7 @@ public class Servei implements Serializable {
 	 * @param descripcio {String} Descriu que es el servei en un String.
 	 * @see ad.uda.moro.CommonUtilities
 	 */
-	public Servei(int id, int idTipus, String descripcio) {
-		super();
-		this.id = id;
+	public Servei(int idTipus, String descripcio) {
 		this.idTipus = idTipus;
 		this.descripcio = descripcio;
 	}
@@ -54,14 +52,6 @@ public class Servei implements Serializable {
 	 */
 	public int getId() {
 		return id;
-	}
-	
-	/**
-	 * Setter de identificador unic del Servei:
-	 * @param id {Integer} Identificador unic del servei
-	 */
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	/**
@@ -102,6 +92,10 @@ public class Servei implements Serializable {
 	@Override
 	public String toString() {
 		return "Servei [id=" + id + ", idTipus=" + idTipus + ", descripcio=" + descripcio + "]";
+	}
+
+	public boolean hasValidInformation() {
+		return (0 < this.idTipus & this.idTipus <= 3 & this.descripcio != "");
 	}
 	
 	

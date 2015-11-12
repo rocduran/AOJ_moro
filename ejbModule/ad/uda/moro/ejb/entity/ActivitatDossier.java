@@ -30,7 +30,7 @@ public class ActivitatDossier implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	
-	@Id @GeneratedValue (strategy = GenerationType.AUTO) @Column(name ="id", length=11) private int id;
+	@Id @GeneratedValue (strategy = GenerationType.IDENTITY) @Column(name ="id", length=11)  private int id;
 	//@Column(name = "idDossier", length=11) private int idDossier;
 	//@Column(name="idServei", length=11) private int idServei;
 	
@@ -117,11 +117,11 @@ public class ActivitatDossier implements Serializable {
 	}
 
 	public boolean hasValidInformation() {
-		return (this.id >= 0 & this.idDossier.getId() >= 0 & this.idServei.getId() >= 0);
+		return (this.idDossier.getId() >= 0 & this.idServei.getId() >= 0);
 	}
-
-	public static boolean isValidActivitatDossierId(Dossier idDossier) {
-		return (idDossier.getId() >= 0);
+	
+	public boolean isValidActivitatDossierId() {
+		return (this.id >= 0);
 	}
 		
 	

@@ -24,7 +24,7 @@ public class Dossier implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id @GeneratedValue (strategy = GenerationType.AUTO) @Column(name ="id", length=11) private int id;
+	@Id @GeneratedValue (strategy = GenerationType.IDENTITY) @Column(name ="id", length=11)  private int id;
 	@Column(name = "preu", length=11) private int preu;
 	@Column(name="descripcio", length=255) private String descripcio;
 	
@@ -34,9 +34,8 @@ public class Dossier implements Serializable {
 	 * @param  preu       Preu del dossier
 	 * @param  descripcio Nom del dossier
 	 */
-	public Dossier(int id, int preu, String descripcio) {
+	public Dossier(int preu, String descripcio) {
 		super();
-		this.id = id;
 		this.preu = preu;
 		this.descripcio = descripcio;
 	}
@@ -53,15 +52,7 @@ public class Dossier implements Serializable {
 	public int getId() {
 		return id;
 	}
-
-	/**
-	 * Setter de l'identificador unic de Dossier
-	 * @param id {Integer} Identificador unic o PrimaryKey del Dossier
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
+	
 	/**
 	 * Getter del preu del dossier
 	 * @return {Integer} Preu del dossier
@@ -101,6 +92,10 @@ public class Dossier implements Serializable {
 	@Override
 	public String toString() {
 		return "Dossier [id=" + id + ", preu=" + preu + ", descripcio=" + descripcio + "]";
+	}
+
+	public boolean hasValidInformation() {
+		return (this.preu >= 0 && this.descripcio != "");
 	}
 	
 	
