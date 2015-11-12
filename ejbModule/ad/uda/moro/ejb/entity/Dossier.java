@@ -17,6 +17,10 @@ import javax.persistence.*;
 	@NamedQuery (
 			name = "dossierById",
 			query = "FROM Dossier d WHERE d.id = :id"
+			),
+	@NamedQuery (
+			name = "allDossier",
+			query = "FROM Dossier d"
 			)
 })
 

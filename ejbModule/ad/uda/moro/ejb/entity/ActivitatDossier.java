@@ -20,8 +20,8 @@ import javax.persistence.*;
 			query = "FROM ActivitatDossier ad ORDER BY ad.id"
 			),
 	@NamedQuery (
-			name = "allServeisIdByDossierId",
-			query = "SELECT idServei FROM ActivitatDossier ad WHERE ad.idDossier = :idDossier"
+			name = "dossiersById",
+			query = "FROM ActivitatDossier ad WHERE ad.idDossier = :idDossier"
 			)
 })
 
@@ -113,9 +113,9 @@ public class ActivitatDossier implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "ActivitatDossier [id=" + id + ", idDossier=" + idDossier + ", idServei=" + idServei + "]";
+		return "ActivitatDossier [id=" + id + ", idDossier=" + idDossier.getId() + ", idServei=" + idServei.getId() + "]";
 	}
-
+	
 	public boolean hasValidInformation() {
 		return (this.idDossier.getId() >= 0 & this.idServei.getId() >= 0);
 	}

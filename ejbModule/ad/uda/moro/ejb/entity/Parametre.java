@@ -28,9 +28,8 @@ public class Parametre implements Serializable {
 	 * @param idTipus	{Integer} Identificador del tipus de servei. Per exemple: <blockquote><b>1 = Guia, 2 = Hotel, etc...</b></blockquote>.
 	 * @param descripcio {String} Descriu que es el parametre en un String.
 	 */
-	public Parametre(int id, int idTipus, String descripcio) {
+	public Parametre(int idTipus, String descripcio) {
 		super();
-		this.id = id;
 		this.idTipus = idTipus;
 		this.descripcio = descripcio;
 	}
@@ -46,14 +45,6 @@ public class Parametre implements Serializable {
 	 */
 	public int getId() {
 		return id;
-	}
-
-	/**
-	 * Setter de l'identificador unic del Parametre:
-	 * @param id {Integer} Identificador unic del parametre
-	 */
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	/**
@@ -95,6 +86,10 @@ public class Parametre implements Serializable {
 	@Override
 	public String toString() {
 		return "Parametres [id=" + id + ", idTipus=" + idTipus + ", descripcio=" + descripcio + "]";
+	}
+
+	public boolean hasValidInformation() {
+		return(0 < this.idTipus && this.idTipus <=3 && this.descripcio != "" );
 	}
 	
 	

@@ -13,7 +13,9 @@ import javax.persistence.Query;
 import ad.uda.moro.MoroException;
 import ad.uda.moro.ejb.entity.ActivitatDossier;
 import ad.uda.moro.ejb.entity.Dossier;
+import ad.uda.moro.ejb.entity.Parametre;
 import ad.uda.moro.ejb.entity.Servei;
+import ad.uda.moro.ejb.entity.Valoracio;
 
 /**
  * Session Bean implementation class EnquestesServiceBean
@@ -63,10 +65,7 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 		if (!activitatDossier.hasValidInformation())
 			throw new MoroException("The information in the specified activitatDossier parameter with id ["
 					+ activitatDossier.getId() + "] is invalid");
-		if (this.getActivitatDossierById(activitatDossier.getId()) == null)
-			throw new MoroException("The specified activitat code [" + activitatDossier.getId()
-					+ "] does not represent an existent ActivitatDossier instance");
-
+		
 		// Update the Establishment instance:
 		try {
 			em.merge(activitatDossier);
@@ -112,60 +111,47 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 		}
 	}
 
-	@SuppressWarnings({ "unchecked", "null" })
+	@SuppressWarnings("unchecked")
 	@Override
-	public Servei[] getServeisDossierList(int idDossier) throws MoroException {
-		return null;
-		// // Verifiquem que el dossier amb id = idDossier existeixi
-		// if (idDossier < 0)
-		// throw new MoroException("The specified id parameter is null");
-		// if (!ActivitatDossier.isValidActivitatDossierId(idDossier))
-		// throw new MoroException("The specified code parameter [" + idDossier
-		// + "] is not a valid code");
-		// if (this.getActivitatDossier(idDossier) == null)
-		// throw new MoroException("The specified activitat code [" + idDossier
-		// + "] does not represent an existent ActivitatDossier instance");
-		//
-		// // Si existeix el dossier, selecionem tots els idServei que tingui
-		// // associats amb el seu idDossier
-		// Query queryIdServeis =
-		// em.createNamedQuery("allServeisIdByDossierId");
-		// queryIdServeis.setParameter("idDossier", idDossier);
-		// List<Integer> idServeis = null;
-		// try {
-		// idServeis = (List<Integer>) queryIdServeis.getResultList();
-		// if (idServeis == null)
-		// return null;
-		// if (idServeis.size() == 0)
-		// return null;
-		// idServeis.toArray(new Integer[idServeis.size()]);
-		// } catch (NoResultException ex) {
-		// return null;
-		// } catch (Exception ex) {
-		// throw new MoroException("Persistence error. Details: " +
-		// ex.getMessage());
-		// }
-		//
-		// // Selecionem tots el serveis que tinguin el seu id dins la taula
-		// // idServeis
-		// System.out.println(idServeis.size());
-		// List<Servei> serveis = null;
-		// try {
-		// for (int i = 0; i < idServeis.size(); i++) {
-		// Query query = em.createNamedQuery("serveiById");
-		// query.setParameter("id", idServeis.get(i));
-		// serveis.add(serveis.size(), (Servei) query.getSingleResult());
-		// }
-		// if (serveis.size() == 0)
-		// return null;
-		// return serveis.toArray(new Servei[serveis.size()]);
-		// } catch (NoResultException ex) {
-		// return null;
-		// } catch (Exception ex) {
-		// throw new MoroException("Persistence error. Details: " +
-		// ex.getMessage());
-		// }
+	public ActivitatDossier[] getServeisDossierList(int idDossier) throws MoroException {
+		Dossier dossier = null;
+		try {
+			dossier = this.getDossierById(idDossier);
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
+		
+		Query query = em.createNamedQuery("dossiersById");
+		query.setParameter("idDossier", dossier);
+		List<ActivitatDossier> actDos = null;
+		try {
+			actDos = (List<ActivitatDossier>) query.getResultList();
+			if (actDos == null)
+				return null;
+			if (actDos.size() == 0)
+				return null;
+			return actDos.toArray(new ActivitatDossier[actDos.size()]);
+		} catch (NoResultException ex) {
+			return null;
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
+	}
 
+	@Override
+	public void addDossier(Dossier dossier) throws MoroException {
+		// Verify parameter:
+		if (dossier == null)
+			throw new MoroException("The specified dossier parameter is null");
+		if (!dossier.hasValidInformation())
+			throw new MoroException("The specified dossier parameter contains invalid information");
+
+		// Add the instance:
+		try {
+			em.persist(dossier);
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
 	}
 
 	@Override
@@ -175,6 +161,22 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 			throw new MoroException("The parameter is negative !");
 		try {
 			return em.find(Dossier.class, idDossier);
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
+	}
+
+	@Override
+	public void addServei(Servei servei) throws MoroException {
+		// Verify parameter:
+		if (servei == null)
+			throw new MoroException("The specified servei parameter is null");
+		if (!servei.hasValidInformation())
+			throw new MoroException("The specified servei parameter contains invalid information");
+
+		// Add the instance:
+		try {
+			em.persist(servei);
 		} catch (Exception ex) {
 			throw new MoroException("Persistence error. Details: " + ex.getMessage());
 		}
@@ -193,35 +195,110 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 	}
 
 	@Override
-	public void addDossier(Dossier dossier) throws MoroException {
+	public void addParametre(Parametre parametre) throws MoroException {
 		// Verify parameter:
-		if (dossier == null)
-			throw new MoroException("The specified dossier parameter is null");
-		if (!dossier.hasValidInformation())
-			throw new MoroException("The specified dossier parameter contains invalid information");
-		
+		if (parametre == null)
+			throw new MoroException("The specified parametre parameter is null");
+		if (!parametre.hasValidInformation())
+			throw new MoroException("The specified parametre parameter contains invalid information");
+
 		// Add the instance:
 		try {
-			em.persist(dossier);
+			em.persist(parametre);
 		} catch (Exception ex) {
 			throw new MoroException("Persistence error. Details: " + ex.getMessage());
 		}
 	}
 
 	@Override
-	public void addServei(Servei servei) throws MoroException {
+	public void addValoracio(Valoracio valoracio) throws MoroException {
 		// Verify parameter:
-				if (servei == null)
-					throw new MoroException("The specified servei parameter is null");
-				if (!servei.hasValidInformation())
-					throw new MoroException("The specified servei parameter contains invalid information");
-				
-				// Add the instance:
-				try {
-					em.persist(servei);
-				} catch (Exception ex) {
-					throw new MoroException("Persistence error. Details: " + ex.getMessage());
-				}
+		if (valoracio == null)
+			throw new MoroException("The specified parametre parameter is null");
+		if (!valoracio.hasValidInformation())
+			throw new MoroException("The specified parametre parameter contains invalid information");
+
+		// Add the instance:
+		try {
+			em.persist(valoracio);
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
+	}
+
+	@Override
+	public Parametre getParametreById(int idParam) throws MoroException {
+		// Verify parameter:
+		if (idParam < 0)
+			throw new MoroException("The parameter is negative !");
+		try {
+			return em.find(Parametre.class, idParam);
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
+	}
+
+	@Override
+	public Dossier[] getDossierList() throws MoroException {
+		Query query = em.createNamedQuery("allDossier");
+		List<Dossier> dossiers = null;
+		try {
+			dossiers = (List<Dossier>) query.getResultList();
+			if (dossiers == null)
+				return null;
+			if (dossiers.size() == 0)
+				return null;
+			return dossiers.toArray(new Dossier[dossiers.size()]);
+		} catch (NoResultException ex) {
+			return null;
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Servei[] getServeiList() throws MoroException {
+		Query query = em.createNamedQuery("allServei");
+		List<Servei> serveis = null;
+		try {
+			serveis = (List<Servei>) query.getResultList();
+			if (serveis == null)
+				return null;
+			if (serveis.size() == 0)
+				return null;
+			return serveis.toArray(new Servei[serveis.size()]);
+		} catch (NoResultException ex) {
+			return null;
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Valoracio[] getValoracioServei(int idServei) throws MoroException {
+		Servei servei = null;
+		try {
+			servei = this.getServeiById(idServei);
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
 		
+		Query query = em.createNamedQuery("valoracioByIdServei");
+		query.setParameter("idServei", servei);
+		List<Valoracio> valoracions = null;
+		try {
+			valoracions = (List<Valoracio>) query.getResultList();
+			if (valoracions == null)
+				return null;
+			if (valoracions.size() == 0)
+				return null;
+			return valoracions.toArray(new Valoracio[valoracions.size()]);
+		} catch (NoResultException ex) {
+			return null;
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
 	}
 }

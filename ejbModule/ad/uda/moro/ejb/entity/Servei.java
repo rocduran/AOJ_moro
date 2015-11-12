@@ -18,6 +18,10 @@ import javax.persistence.*;
 	@NamedQuery (
 			name = "serveiById",
 			query = "FROM Servei s WHERE s.id = :id"
+			),
+	@NamedQuery (
+			name = "allServei",
+			query = "FROM Servei s"
 			)
 })
 
