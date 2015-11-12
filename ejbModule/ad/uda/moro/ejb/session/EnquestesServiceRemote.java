@@ -51,9 +51,7 @@ public interface EnquestesServiceRemote {
 	 * 
 	 * @param activitatDossier
 	 *            {ActivitatDossier} La instancia d'
-	 *            <code>ActivitatDossier</code> a actualitzar. L'identificador
-	 *            (id) de la instancia es farà servir per trobar
-	 *            l'ActivitatDossier a actualitzar
+	 *            <code>ActivitatDossier</code> a actualitzar. 
 	 * @throws MoroException
 	 *             Si l'ActivitatDossier conte informacio invalida o no
 	 *             existeix. També llança una Exception si hi ha un error de
@@ -69,7 +67,7 @@ public interface EnquestesServiceRemote {
 	 *            {Integer} L'identificador d'<code>ActivitatDossier</code> a
 	 *            borrar.
 	 * @throws MoroException
-	 *             Si un establiment amb l'identificador especificat no existeix
+	 *             Si un ActivitatDossier amb l'identificador especificat no existeix
 	 *             o o si hi ha un error de la capa de persistencia.
 	 */
 	public void deleteActivitatDossier(int id) throws MoroException;
@@ -226,4 +224,113 @@ public interface EnquestesServiceRemote {
 	 *             Si hi ha un error de la capa de persistencia.
 	 */
 	public Valoracio[] getValoracioServei(int idServei) throws MoroException;
+
+	/**
+	 * Retorna totes les intancies de <code>Parametre</code> de la capa de
+	 * persitencia,
+	 * 
+	 * @return {Parametre[]} Un array d'instancies de <code>Parametre</code> o
+	 *         <b>null</b> si no hi ha cap <code>Parametre</code> a la capa de
+	 *         persistencia.
+	 * @throws MoroException
+	 *             Si hi ha un error de la capa de persistencia.
+	 */
+	public Parametre[] getParametreList() throws MoroException;
+
+	/**
+	 * Retorna totes les intancies de <code>Valoracio</code> del parametre amb
+	 * <code>idParam</code>
+	 * 
+	 * @param {int}
+	 *            identificador del parametre
+	 * 
+	 * @return {Valoracio[]} Un array d'instancies de <code>Valoracio</code> o
+	 *         <b>null</b> si no hi ha cap <code>Valoracio</code> a la capa de
+	 *         persistencia.
+	 * @throws MoroException
+	 *             Si hi ha un error de la capa de persistencia.
+	 */
+	public Valoracio[] getValoracioParametre(int idParam) throws MoroException;
+
+	/**
+	 * Borra una instancia de <code>Dossier</code> de la capa de
+	 * persistencia.
+	 * 
+	 * @param id
+	 *            {Integer} L'identificador d'<code>Dossier</code> a
+	 *            borrar.
+	 * @throws MoroException
+	 *             Si un Dossier amb l'identificador especificat no existeix
+	 *             o o si hi ha un error de la capa de persistencia.
+	 */
+	public void deleteDossier(int id) throws MoroException;
+
+	/**
+	 * Actualitza una instancia de <code>Dossier</code> a la capa de
+	 * persistència.
+	 * 
+	 * @param Dossier
+	 *            {Dossier} La instancia de 
+	 *            <code>Dossier</code> a actualitzar.
+	 * @throws MoroException
+	 *             Si el Dossier conte informacio invalida o no
+	 *             existeix. També llança una Exception si hi ha un error de
+	 *             persistència.
+	 */
+	public void updateDossier(Dossier dossier) throws MoroException;
+
+	/**
+	 * Borra una instancia de <code>Servei</code> de la capa de
+	 * persistencia.
+	 * 
+	 * @param id
+	 *            {Integer} L'identificador d'<code>Servei</code> a
+	 *            borrar.
+	 * @throws MoroException
+	 *             Si un Servei amb l'identificador especificat no existeix
+	 *             o o si hi ha un error de la capa de persistencia.
+	 */
+	public void deleteServei(int id) throws MoroException;
+	
+	/**
+	 * Actualitza una instancia de <code>Dossier</code> a la capa de
+	 * persistència.
+	 * 
+	 * @param Dossier
+	 *            {Dossier} La instancia de 
+	 *            <code>Dossier</code> a actualitzar.
+	 * @throws MoroException
+	 *             Si el Dossier conte informacio invalida o no
+	 *             existeix. També llança una Exception si hi ha un error de
+	 *             persistència.
+	 */
+	public void updateServei(Servei servei) throws MoroException;
+
+	/**
+	 * Borra una instancia de <code>Parametre</code> de la capa de
+	 * persistencia.
+	 * 
+	 * @param id
+	 *            {Integer} L'identificador d'<code>Parametre</code> a
+	 *            borrar.
+	 * @throws MoroException
+	 *             Si un Parametre amb l'identificador especificat no existeix
+	 *             o o si hi ha un error de la capa de persistencia.
+	 */
+	public void deleteParametre(int id) throws MoroException;
+
+	/**
+	 * Actualitza una instancia de <code>Parametre</code> a la capa de
+	 * persistència.
+	 * 
+	 * @param Dossier
+	 *            {Parametre} La instancia de 
+	 *            <code>Parametre</code> a actualitzar.
+	 * @throws MoroException
+	 *             Si el Parametre conte informacio invalida o no
+	 *             existeix. També llança una Exception si hi ha un error de
+	 *             persistència.
+	 */
+	public void updateParametre(Parametre parametre) throws MoroException;
+
 }

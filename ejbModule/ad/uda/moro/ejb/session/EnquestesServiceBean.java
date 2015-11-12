@@ -65,14 +65,13 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 		if (!activitatDossier.hasValidInformation())
 			throw new MoroException("The information in the specified activitatDossier parameter with id ["
 					+ activitatDossier.getId() + "] is invalid");
-		
-		// Update the Establishment instance:
+
+		// Update the ActivitatDossier instance:
 		try {
 			em.merge(activitatDossier);
 		} catch (Exception ex) {
 			throw new MoroException("Persistence error. Details: " + ex.getMessage());
 		}
-
 	}
 
 	@Override
@@ -89,7 +88,6 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 		} catch (Exception ex) {
 			throw new MoroException("Persistence error. Details: " + ex.getMessage());
 		}
-
 	}
 
 	@SuppressWarnings("unchecked")
@@ -120,7 +118,7 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 		} catch (Exception ex) {
 			throw new MoroException("Persistence error. Details: " + ex.getMessage());
 		}
-		
+
 		Query query = em.createNamedQuery("dossiersById");
 		query.setParameter("idDossier", dossier);
 		List<ActivitatDossier> actDos = null;
@@ -238,6 +236,7 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Dossier[] getDossierList() throws MoroException {
 		Query query = em.createNamedQuery("allDossier");
@@ -277,6 +276,25 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 
 	@SuppressWarnings("unchecked")
 	@Override
+	public Parametre[] getParametreList() throws MoroException {
+		Query query = em.createNamedQuery("allParametre");
+		List<Parametre> parametres = null;
+		try {
+			parametres = (List<Parametre>) query.getResultList();
+			if (parametres == null)
+				return null;
+			if (parametres.size() == 0)
+				return null;
+			return parametres.toArray(new Parametre[parametres.size()]);
+		} catch (NoResultException ex) {
+			return null;
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
 	public Valoracio[] getValoracioServei(int idServei) throws MoroException {
 		Servei servei = null;
 		try {
@@ -284,7 +302,7 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 		} catch (Exception ex) {
 			throw new MoroException("Persistence error. Details: " + ex.getMessage());
 		}
-		
+
 		Query query = em.createNamedQuery("valoracioByIdServei");
 		query.setParameter("idServei", servei);
 		List<Valoracio> valoracions = null;
@@ -300,5 +318,116 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 		} catch (Exception ex) {
 			throw new MoroException("Persistence error. Details: " + ex.getMessage());
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Valoracio[] getValoracioParametre(int idParam) throws MoroException {
+		Parametre parametre = null;
+		try {
+			parametre = this.getParametreById(idParam);
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
+
+		Query query = em.createNamedQuery("valoracioByIdParametre");
+		query.setParameter("idParam", parametre);
+		List<Valoracio> valoracions = null;
+		try {
+			valoracions = (List<Valoracio>) query.getResultList();
+			if (valoracions == null)
+				return null;
+			if (valoracions.size() == 0)
+				return null;
+			return valoracions.toArray(new Valoracio[valoracions.size()]);
+		} catch (NoResultException ex) {
+			return null;
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
+	}
+
+	@Override
+	public void deleteDossier(int id) throws MoroException {
+		// Verify parameter:
+		if (id < 0)
+			throw new MoroException("The specified id parameter is null");
+		Dossier dossier = this.getDossierById(id);
+
+		try {
+			em.remove(dossier);
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
+	}
+
+	@Override
+	public void updateDossier(Dossier dossier) throws MoroException {
+		// Check parameter:
+		if (dossier == null)
+			throw new MoroException("The specified Dossier parameter is null");
+		if (!dossier.hasValidInformation())
+			throw new MoroException(
+					"The information in the specified Dossier parameter with id [" + dossier.getId() + "] is invalid");
+
+		// Update the Dossier instance:
+		try {
+			em.merge(dossier);
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
+	}
+
+	@Override
+	public void deleteServei(int id) throws MoroException {
+		// TODO mirar xq cony pete ! xD
+		// Verify parameter:
+		if (id < 0)
+			throw new MoroException("The specified id parameter is null");
+		Servei servei = this.getServeiById(id);
+
+		try {
+			em.remove(servei);
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
+	}
+
+	@Override
+	public void updateServei(Servei servei) throws MoroException {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void deleteParametre(int id) throws MoroException {
+		if (id < 0)
+			throw new MoroException("The specified id parameter is null");
+		Parametre parametre = this.getParametreById(id);
+
+		try {
+			em.remove(parametre);
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
+
+	}
+
+	@Override
+	public void updateParametre(Parametre parametre) throws MoroException {
+		// Check parameter:
+		if (parametre == null)
+			throw new MoroException("The specified Parametre parameter is null");
+		if (!parametre.hasValidInformation())
+			throw new MoroException(
+					"The information in the specified Parametre parameter with id [" + parametre.getId() + "] is invalid");
+
+		// Update the Dossier instance:
+		try {
+			em.merge(parametre);
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
+
 	}
 }

@@ -13,6 +13,16 @@ import javax.persistence.*;
 
 @Entity(name="Parametre")
 @Table(name="parametres")
+@NamedQueries ( {
+	@NamedQuery (
+			name = "parametreByid",
+			query = "FROM Parametre p WHERE p.id = :id"
+			),
+	@NamedQuery (
+			name = "allParametre",
+			query = "FROM Parametre p"
+			)
+})
 
 public class Parametre implements Serializable {
 

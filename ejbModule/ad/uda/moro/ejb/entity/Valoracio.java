@@ -13,10 +13,16 @@ import javax.persistence.*;
 
 @Entity(name = "Valoracio")
 @Table(name = "valoracio")
-@NamedQuery (
+@NamedQueries ( {
+	@NamedQuery (
 		name = "valoracioByIdServei",
 		query = "FROM Valoracio v WHERE v.idServei = :idServei"
-		)
+		),
+	@NamedQuery (
+			name = "valoracioByIdParametre",
+			query = "FROM Valoracio v WHERE v.idParam = :idParam"
+			)
+})
 
 public class Valoracio implements Serializable {
 
@@ -167,7 +173,7 @@ public class Valoracio implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "Valoracio [id=" + id + ", idDossier=" + idDossier + ", idServei=" + idServei + ", idParam=" + idParam
+		return "Valoracio [id=" + id + ", idDossier=" + idDossier.getId() + ", idServei=" + idServei.getId() + ", idParam=" + idParam.getId()
 				+ ", valor=" + valor + "]";
 	}
 
