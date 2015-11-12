@@ -3,6 +3,8 @@ package ad.uda.moro.ejb.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+
+
 /**
 * Class <code><b>ActivitatDossier</b></code>.  
 * <br>Entity <code><b>ActivitatDossier</b></code>. 
@@ -28,9 +30,17 @@ public class ActivitatDossier implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	
-	@Id @Column(name ="id", length=11) private int id;
-	@Column(name = "idDossier", length=11) private int idDossier;
-	@Column(name="idServei", length=11) private int idServei;
+	@Id @GeneratedValue (strategy = GenerationType.AUTO) @Column(name ="id", length=11) private int id;
+	//@Column(name = "idDossier", length=11) private int idDossier;
+	//@Column(name="idServei", length=11) private int idServei;
+	
+	@ManyToOne (optional = false)
+	@JoinColumn (name = "idDossier")
+	private Dossier idDossier;
+	
+	@ManyToOne (optional = false)
+	@JoinColumn (name = "idServei")
+	private Servei idServei;
 	
 	/**
 	 * Constructor method de <blockquote><b>ActivitatDossier</b></blockquote> amb parametres:
@@ -38,9 +48,8 @@ public class ActivitatDossier implements Serializable {
 	 * @param idDossier	{Integer} Identificador d'un dossier.
 	 * @param idServei {Integer} Identificador d'un servei.
 	 */
-	public ActivitatDossier(int id, int idDossier, int idServei) {
+	public ActivitatDossier(Dossier idDossier, Servei idServei) {
 		super();
-		this.id = id;
 		this.idDossier = idDossier;
 		this.idServei = idServei;
 	}
@@ -62,15 +71,15 @@ public class ActivitatDossier implements Serializable {
 	 * Setter de l'identificador unic de ActivitatDossier
 	 * @param id {Integer} Identificador unic o PrimaryKey del ActivitatDossier
 	 */
-	public void setId(int id) {
-		this.id = id;
-	}
+//	public void setId(int id) {
+//		this.id = id;
+//	}
 
 	/**
 	 * Getter de l'identificador unic d'un Dossier
 	 * @return {Integer} Identificador unic o PrimaryKey del Dossier
 	 */
-	public int getIdDossier() {
+	public Dossier getIdDossier() {
 		return idDossier;
 	}
 
@@ -78,7 +87,7 @@ public class ActivitatDossier implements Serializable {
 	 * Setter de l'identificador unic d'un Dossier
 	 * @param idDossier {Integer} Identificador unic o PrimaryKey del Dossier
 	 */
-	public void setIdDossier(int idDossier) {
+	public void setIdDossier(Dossier idDossier) {
 		this.idDossier = idDossier;
 	}
 
@@ -86,7 +95,7 @@ public class ActivitatDossier implements Serializable {
 	 * Getter de identificador unic d'un Servei:
 	 * @return {Integer} El identificador unic d'un servei
 	 */
-	public int getIdServei() {
+	public Servei getIdServei() {
 		return idServei;
 	}
 
@@ -94,7 +103,7 @@ public class ActivitatDossier implements Serializable {
 	 * Setter de identificador unic d'un Servei:
 	 * @param idServei {Integer} Identificador unic d'un servei
 	 */
-	public void setIdServei(int idServei) {
+	public void setIdServei(Servei idServei) {
 		this.idServei = idServei;
 	}
 
@@ -108,11 +117,11 @@ public class ActivitatDossier implements Serializable {
 	}
 
 	public boolean hasValidInformation() {
-		return (this.id >= 0 & this.idDossier >= 0 & this.idServei >= 0);
+		return (this.id >= 0 & this.idDossier.getId() >= 0 & this.idServei.getId() >= 0);
 	}
 
-	public static boolean isValidActivitatDossierId(int id) {
-		return (id >= 0);
+	public static boolean isValidActivitatDossierId(Dossier idDossier) {
+		return (idDossier.getId() >= 0);
 	}
 		
 	

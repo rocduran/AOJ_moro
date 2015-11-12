@@ -4,6 +4,7 @@ import javax.ejb.Remote;
 
 import ad.uda.moro.MoroException;
 import ad.uda.moro.ejb.entity.ActivitatDossier;
+import ad.uda.moro.ejb.entity.Dossier;
 import ad.uda.moro.ejb.entity.Servei;
 
 @Remote
@@ -72,4 +73,24 @@ public interface EnquestesServiceRemote {
 	 * @throws MoroException
 	 */
 	public Servei[] getServeisDossierList(int idDossier) throws MoroException;
+	
+	/*
+	 * Altres
+	 */
+	
+	/**
+	 * Retorna una entitat de <code>Dossier</code> a partir de un id donat
+	 * @param idDossier PK del dossier que busquem
+	 * @return Entitat de Dossier buscada
+	 * @throws MoroException
+	 */
+	public Dossier getDossierById(int idDossier) throws MoroException;
+	
+	/**
+	 * Retorna una entitat de <code>Servei</code> a partir de un id donat
+	 * @param idServei PK del servei que busquem
+	 * @return Entitat de Servei buscada
+	 * @throws MoroException
+	 */
+	public Servei getServeiById(int idServei) throws MoroException;
 }

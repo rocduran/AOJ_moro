@@ -13,6 +13,7 @@ import javax.persistence.Query;
 
 import ad.uda.moro.MoroException;
 import ad.uda.moro.ejb.entity.ActivitatDossier;
+import ad.uda.moro.ejb.entity.Dossier;
 import ad.uda.moro.ejb.entity.Servei;
 
 /**
@@ -91,7 +92,8 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 		// Verify parameter:
 		if (id < 0)
 			throw new MoroException("The specified id parameter is null");
-		if (!ActivitatDossier.isValidActivitatDossierId(id))
+		Dossier dossier = getDossierById(id);
+		if (!ActivitatDossier.isValidActivitatDossierId(dossier))
 			throw new MoroException("The specified code parameter [" + id + "] is not a valid code");
 		ActivitatDossier a = this.getActivitatDossier(id);
 
@@ -128,51 +130,82 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 	@SuppressWarnings({ "unchecked", "null" })
 	@Override
 	public Servei[] getServeisDossierList(int idDossier) throws MoroException {
-		// Verifiquem que el dossier amb id = idDossier existeixi
-		if (idDossier < 0)
-			throw new MoroException("The specified id parameter is null");
-		if (!ActivitatDossier.isValidActivitatDossierId(idDossier))
-			throw new MoroException("The specified code parameter [" + idDossier + "] is not a valid code");
-		if (this.getActivitatDossier(idDossier) == null)
-			throw new MoroException("The specified activitat code [" + idDossier
-					+ "] does not represent an existent ActivitatDossier instance");
+		return null;
+//		// Verifiquem que el dossier amb id = idDossier existeixi
+//		if (idDossier < 0)
+//			throw new MoroException("The specified id parameter is null");
+//		if (!ActivitatDossier.isValidActivitatDossierId(idDossier))
+//			throw new MoroException("The specified code parameter [" + idDossier + "] is not a valid code");
+//		if (this.getActivitatDossier(idDossier) == null)
+//			throw new MoroException("The specified activitat code [" + idDossier
+//					+ "] does not represent an existent ActivitatDossier instance");
+//
+//		// Si existeix el dossier, selecionem tots els idServei que tingui
+//		// associats amb el seu idDossier
+//		Query queryIdServeis = em.createNamedQuery("allServeisIdByDossierId");
+//		queryIdServeis.setParameter("idDossier", idDossier);
+//		List<Integer> idServeis = null;
+//		try {
+//			idServeis = (List<Integer>) queryIdServeis.getResultList();
+//			if (idServeis == null)
+//				return null;
+//			if (idServeis.size() == 0)
+//				return null;
+//			idServeis.toArray(new Integer[idServeis.size()]);
+//		} catch (NoResultException ex) {
+//			return null;
+//		} catch (Exception ex) {
+//			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+//		}
+//
+//		// Selecionem tots el serveis que tinguin el seu id dins la taula
+//		// idServeis
+//		System.out.println(idServeis.size());
+//		List<Servei> serveis = null;
+//		try {
+//			for (int i = 0; i < idServeis.size(); i++) {
+//				Query query = em.createNamedQuery("serveiById");
+//				query.setParameter("id", idServeis.get(i));
+//				serveis.add(serveis.size(), (Servei) query.getSingleResult());
+//			}
+//			if (serveis.size() == 0)
+//				return null;
+//			return serveis.toArray(new Servei[serveis.size()]);
+//		} catch (NoResultException ex) {
+//			return null;
+//		} catch (Exception ex) {
+//			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+//		}
 
-		// Si existeix el dossier, selecionem tots els idServei que tingui
-		// associats amb el seu idDossier
-		Query queryIdServeis = em.createNamedQuery("allServeisIdByDossierId");
-		queryIdServeis.setParameter("idDossier", idDossier);
-		List<Integer> idServeis = null;
+	}
+
+	@Override
+	public Dossier getDossierById(int idDossier) throws MoroException {
+		Dossier dossier = null;
 		try {
-			idServeis = (List<Integer>) queryIdServeis.getResultList();
-			if (idServeis == null)
-				return null;
-			if (idServeis.size() == 0)
-				return null;
-			idServeis.toArray(new Integer[idServeis.size()]);
+				Query query = em.createNamedQuery("dossierById");
+				query.setParameter("id", idDossier);
+				dossier = (Dossier) query.getSingleResult();
+			return dossier;
 		} catch (NoResultException ex) {
 			return null;
 		} catch (Exception ex) {
 			throw new MoroException("Persistence error. Details: " + ex.getMessage());
 		}
+	}
 
-		// Selecionem tots el serveis que tinguin el seu id dins la taula
-		// idServeis
-		System.out.println(idServeis.size());
-		List<Servei> serveis = null;
+	@Override
+	public Servei getServeiById(int idServei) throws MoroException {
+		Servei servei = null;
 		try {
-			for (int i = 0; i < idServeis.size(); i++) {
 				Query query = em.createNamedQuery("serveiById");
-				query.setParameter("id", idServeis.get(i));
-				serveis.add(serveis.size(), (Servei) query.getSingleResult());
-			}
-			if (serveis.size() == 0)
-				return null;
-			return serveis.toArray(new Servei[serveis.size()]);
+				query.setParameter("id", idServei);
+				servei = (Servei) query.getSingleResult();
+			return servei;
 		} catch (NoResultException ex) {
 			return null;
 		} catch (Exception ex) {
 			throw new MoroException("Persistence error. Details: " + ex.getMessage());
 		}
-
 	}
 }

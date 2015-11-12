@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 
+
 /**
 * Class <code><b>Valoracio</b></code>.  
 * <br>Entity <code><b>Valoracio</b></code>. 
@@ -18,7 +19,7 @@ public class Valoracio implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id @Column(name ="id", length=11) private int id;
+	@Id @GeneratedValue (strategy = GenerationType.AUTO) @Column(name ="id", length=11) private int id;
 	@Column(name = "idDossier", length=11) private int idDossier;
 	@Column(name="idServei", length=11) private int idServei;
 	@Column(name="idParam", length=11) private int idParam;

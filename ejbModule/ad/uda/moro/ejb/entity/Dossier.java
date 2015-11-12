@@ -3,6 +3,7 @@ package ad.uda.moro.ejb.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+
 /**
 * Class <code><b>Dossier</b></code>.  
 * <br>Entity <code><b>Servei</b></code>. 
@@ -12,12 +13,18 @@ import javax.persistence.*;
 	
 @Entity(name="Dossier")
 @Table(name="dossier")
+@NamedQueries ( {
+	@NamedQuery (
+			name = "dossierById",
+			query = "FROM Dossier d WHERE d.id = :id"
+			)
+})
 
 public class Dossier implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id @Column(name ="id", length=11) private int id;
+	@Id @GeneratedValue (strategy = GenerationType.AUTO) @Column(name ="id", length=11) private int id;
 	@Column(name = "preu", length=11) private int preu;
 	@Column(name="descripcio", length=255) private String descripcio;
 	

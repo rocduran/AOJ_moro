@@ -3,6 +3,7 @@ package ad.uda.moro.ejb.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+
 /**
  * Class <code><b>Servei</b></code>. 
  * <br>Entity <code><b>Servei</b></code>. 
@@ -24,7 +25,7 @@ public class Servei implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id @Column(name ="id", length=11) private int id;
+	@Id @GeneratedValue (strategy = GenerationType.AUTO) @Column(name ="id", length=11) private int id;
 	@Column(name = "idTipus", length=11) private int idTipus;
 	@Column(name="descripcio", length=255) private String descripcio;
 	
