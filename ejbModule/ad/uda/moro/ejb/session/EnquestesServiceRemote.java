@@ -9,12 +9,6 @@ import ad.uda.moro.ejb.entity.Servei;
 
 @Remote
 public interface EnquestesServiceRemote {
-	
-	/**
-	 * Testing
-	 * @return an string with a "Hello world!" String.
-	 */
-	public String helloWorld();
 
 	/*
 	 *  CRUD ActivitatDossier
@@ -28,7 +22,7 @@ public interface EnquestesServiceRemote {
 	 * @return L'<code>ActivitatDossier</code> amb l'id especificat o <b>null</b> si l'ActivitatDossier no s'ha trobat.
 	 * @throws MoroException Si hi ha un error a la capa de persistencia.
 	 */
-	public ActivitatDossier getActivitatDossier(int id) throws MoroException;
+	public ActivitatDossier getActivitatDossierById(int id) throws MoroException;
 	
 	/**
 	 * Afegeix una nova instancia d'<code>ActivitatDossier</code> a la capa de persistencia.
@@ -93,4 +87,18 @@ public interface EnquestesServiceRemote {
 	 * @throws MoroException
 	 */
 	public Servei getServeiById(int idServei) throws MoroException;
+	
+	/**
+	 * Afegeix una nova instancia de <code>Dossier</code> a la capa de persistencia.
+	 * @param dossier {Dossier} La instancia a afegir. Ha de ser valid i amb totes les dades completes.
+	 * @throws MoroException Si la instancia donada es invalida, <code>null</code>, ja existeix o si hi ha un error de la capa de persistencia.
+	 */
+	public void addDossier(Dossier dossier) throws MoroException;
+	
+	/**
+	 * Afegeix una nova instancia de <code>Servei</code> a la capa de persistencia.
+	 * @param servei {servei} La instancia a afegir. Ha de ser valid i amb totes les dades completes.
+	 * @throws MoroException Si la instancia donada es invalida, <code>null</code>, ja existeix o si hi ha un error de la capa de persistencia.
+	 */
+	public void addServei(Servei servei) throws MoroException;
 }

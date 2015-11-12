@@ -18,7 +18,7 @@ public class Parametre implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id @GeneratedValue (strategy = GenerationType.AUTO) @Column(name ="id", length=11) private int id;
+	@Id @GeneratedValue (strategy = GenerationType.IDENTITY) @Column(name ="id", length=11)  private int id;
 	@Column(name = "idTipus", length=11) private int idTipus;
 	@Column(name="descripcio", length=255) private String descripcio;
 	
