@@ -19,13 +19,13 @@ public interface EnquestesServiceRemote {
 	// TODO UPDATE JavaDoc
 
 	/**
-	 * Retorna una instancia d'<code>ActivitatDossier</code> amb l'id
+	 * Retorna una instancia d'<code>ActivitatDossier</code> amb l'identificador
 	 * especificat.
 	 * 
 	 * @param id
 	 *            {Integer} L'identificador únic d'activitatDossier. Ha de ser
 	 *            un identificador valid.
-	 * @return L'<code>ActivitatDossier</code> amb l'id especificat o
+	 * @return L'<code>ActivitatDossier</code> amb l'identificador especificat o
 	 *         <b>null</b> si l'ActivitatDossier no s'ha trobat.
 	 * @throws MoroException
 	 *             Si hi ha un error a la capa de persistencia.
@@ -38,7 +38,7 @@ public interface EnquestesServiceRemote {
 	 * 
 	 * @param activitatDossier
 	 *            {ActivitatDossier} La instancia a afegir. Ha de ser valid i
-	 *            amb totes les dades completes.
+	 *            amb totes les dades complertes.
 	 * @throws MoroException
 	 *             Si la instancia donada es invalida, <code>null</code>, ja
 	 *             existeix o si hi ha un error de la capa de persistencia.
@@ -54,7 +54,7 @@ public interface EnquestesServiceRemote {
 	 *            <code>ActivitatDossier</code> a actualitzar. 
 	 * @throws MoroException
 	 *             Si l'ActivitatDossier conte informacio invalida o no
-	 *             existeix. També llança una Exception si hi ha un error de
+	 *             existeix. Tambe llança una Exception si hi ha un error de
 	 *             persistència.
 	 */
 	public void updateActivitatDossier(ActivitatDossier activitatDossier) throws MoroException;
@@ -68,15 +68,13 @@ public interface EnquestesServiceRemote {
 	 *            borrar.
 	 * @throws MoroException
 	 *             Si un ActivitatDossier amb l'identificador especificat no existeix
-	 *             o o si hi ha un error de la capa de persistencia.
+	 *             o si hi ha un error de la capa de persistencia.
 	 */
 	public void deleteActivitatDossier(int id) throws MoroException;
 
 	/*
 	 * Llistats dels entities
 	 */
-
-	// TODO Llistats de Servei_Dossier, Valoracio_Servei, Valoracio_Parametre
 
 	/**
 	 * Retorna totes les intancies d'<code>ActivitatDossier</code> de la capa de
@@ -104,6 +102,8 @@ public interface EnquestesServiceRemote {
 	/*
 	 * Altres
 	 */
+	
+	//TODO CRUD Valoracio i servei
 
 	/**
 	 * Retorna una entitat de <code>Dossier</code> a partir de un id donat

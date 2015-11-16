@@ -5,3 +5,4 @@ metadata
 ejbModule/.DS_Store
 ejbModule/META-INF/.DS_Store
 /bin/
+/build/
