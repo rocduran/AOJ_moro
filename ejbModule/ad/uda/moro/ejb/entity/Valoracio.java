@@ -15,6 +15,10 @@ import javax.persistence.*;
 @Table(name = "valoracio")
 @NamedQueries ( {
 	@NamedQuery (
+			name = "allValoracio",
+			query = "FROM Valoracio v"
+			),
+	@NamedQuery (
 		name = "valoracioByIdServei",
 		query = "FROM Valoracio v WHERE v.idServei = :idServei"
 		),
