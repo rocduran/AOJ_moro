@@ -42,7 +42,6 @@ public class ActivitatDossier implements Serializable {
 	
 	/**
 	 * Constructor method de <blockquote><b>ActivitatDossier</b></blockquote> amb parametres:
-	 * @param id 	{Integer} Identificador únic de la relació
 	 * @param idDossier	{Integer} Identificador d'un dossier.
 	 * @param idServei {Integer} Identificador d'un servei.
 	 */
@@ -64,14 +63,6 @@ public class ActivitatDossier implements Serializable {
 	public int getId() {
 		return id;
 	}
-
-	/**
-	 * Setter de l'identificador unic de ActivitatDossier
-	 * @param id {Integer} Identificador unic o PrimaryKey del ActivitatDossier
-	 */
-//	public void setId(int id) {
-//		this.id = id;
-//	}
 
 	/**
 	 * Getter de l'identificador unic d'un Dossier

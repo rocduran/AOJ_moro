@@ -35,7 +35,6 @@ public class Servei implements Serializable {
 	
 	/**
 	 * Constructor method <blockquote><b>Servei</b></blockquote>  amb parametres:
-	 * @param id 		{Integer} Identificador del servei (PrimaryKey del Entity)
 	 * @param idTipus 	{Integer} Identificador del tipus de servei. Per exemple: <blockquote><b>1 = Guia, 2 = Hotel, etc...</b></blockquote>
 	 * @param descripcio {String} Descriu que es el servei en un String.
 	 * @see ad.uda.moro.CommonUtilities

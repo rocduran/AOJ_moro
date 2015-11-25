@@ -177,7 +177,7 @@ public interface EnquestesServiceRemote {
 	 * @param idDossier
 	 *            PK del dossier que busquem
 	 * @return Entitat de Dossier buscada
-	 * @throws MoroException
+	 * @throws MoroException Llança MoroException
 	 */
 	public Dossier getDossierById(int idDossier) throws MoroException;
 
@@ -199,7 +199,7 @@ public interface EnquestesServiceRemote {
 	 * @param idParam
 	 *            PK del servei que busquem
 	 * @return Entitat de Parametre buscada
-	 * @throws MoroException
+	 * @throws MoroException Llança MoroException
 	 */
 	public Parametre getParametreById(int idParam) throws MoroException;
 
@@ -221,7 +221,7 @@ public interface EnquestesServiceRemote {
 	 * @param idServei
 	 *            PK del servei que busquem
 	 * @return Entitat de Servei buscada
-	 * @throws MoroException
+	 * @throws MoroException Llança MoroException
 	 */
 	public Servei getServeiById(int idServei) throws MoroException;
 
@@ -240,11 +240,12 @@ public interface EnquestesServiceRemote {
 	/**
 	 * Retorna totes les instancies de <code>Servei</code> d'un dossier amb
 	 * idDossier = id
+	 * @param idDossier {Integer} Identificador del dossier
 	 * 
 	 * @return {Servei[]} un array d'instances de <code>Servei</code> o
 	 *         <b>null</b> si no en hi cap o no existeix el Dossier amb
 	 *         idDossier = dossier
-	 * @throws MoroException
+	 * @throws MoroException Llança MoroException
 	 */
 	public ActivitatDossier[] getServeisDossierList(int idDossier) throws MoroException;
 
@@ -264,7 +265,7 @@ public interface EnquestesServiceRemote {
 	 * Retorna totes les intancies de <code>Valoracio</code> del parametre amb
 	 * <code>idParam</code>
 	 * 
-	 * @param {int}
+	 * @param idParam {int}
 	 *            identificador del parametre
 	 * 
 	 * @return {Valoracio[]} Un array d'instancies de <code>Valoracio</code> o
@@ -307,7 +308,7 @@ public interface EnquestesServiceRemote {
 	 * Actualitza una instancia de <code>Dossier</code> a la capa de
 	 * persistència.
 	 * 
-	 * @param Dossier
+	 * @param dossier
 	 *            {Dossier} La instancia de 
 	 *            <code>Dossier</code> a actualitzar.
 	 * @throws MoroException
@@ -321,7 +322,7 @@ public interface EnquestesServiceRemote {
 	 * Actualitza una instancia de <code>Parametre</code> a la capa de
 	 * persistència.
 	 * 
-	 * @param Dossier
+	 * @param parametre
 	 *            {Parametre} La instancia de 
 	 *            <code>Parametre</code> a actualitzar.
 	 * @throws MoroException
@@ -335,11 +336,11 @@ public interface EnquestesServiceRemote {
 	 * Actualitza una instancia de <code>Dossier</code> a la capa de
 	 * persistència.
 	 * 
-	 * @param Dossier
-	 *            {Dossier} La instancia de 
-	 *            <code>Dossier</code> a actualitzar.
+	 * @param servei
+	 *            {Servei} La instancia de 
+	 *            <code>Servei</code> a actualitzar.
 	 * @throws MoroException
-	 *             Si el Dossier conte informacio invalida o no
+	 *             Si el Servei conte informacio invalida o no
 	 *             existeix. També llança una Exception si hi ha un error de
 	 *             persistència.
 	 */

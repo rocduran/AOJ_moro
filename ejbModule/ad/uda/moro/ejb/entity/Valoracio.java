@@ -55,9 +55,6 @@ public class Valoracio implements Serializable {
 	/**
 	 * Constructor method de <blockquote><b>Valoració</b></blockquote> amb
 	 * parametres:
-	 * 
-	 * @param id
-	 *            {Integer} Identificador unic d'una valoració
 	 * @param idDossier
 	 *            {Integer} Identificador unic d'un dossier
 	 * @param idServei

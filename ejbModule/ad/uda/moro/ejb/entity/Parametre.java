@@ -34,7 +34,6 @@ public class Parametre implements Serializable {
 	
 	/**
 	 * Constructor method de <blockquote><b>Parametre</b></blockquote> amb parametres:
-	 * @param id 	{Integer} Identificador unic de la relacio
 	 * @param idTipus	{Integer} Identificador del tipus de servei. Per exemple: <blockquote><b>1 = Guia, 2 = Hotel, etc...</b></blockquote>.
 	 * @param descripcio {String} Descriu que es el parametre en un String.
 	 */

@@ -34,7 +34,6 @@ public class Dossier implements Serializable {
 	
 	/**
 	 * Constructor method de <blockquote><b>Dossier</b></blockquote> amb parametres:
-	 * @param  id         Identificador unic del dossier
 	 * @param  preu       Preu del dossier
 	 * @param  descripcio Nom del dossier
 	 */
@@ -102,6 +101,10 @@ public class Dossier implements Serializable {
 		return (this.preu >= 0 && this.descripcio != "");
 	}
 	
+	
+	public static boolean isValidIdDossier(int idDossier){
+		return (idDossier>=0);
+	}
 	
 	
 	
