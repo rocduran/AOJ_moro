@@ -2,6 +2,7 @@ package ad.uda.moro.ejb.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 /**
@@ -14,6 +15,7 @@ import javax.persistence.*;
 
 @Entity(name="Servei")
 @Table(name="servei")
+@XmlRootElement(name = "servei")
 @NamedQueries ( {
 	@NamedQuery (
 			name = "serveiById",

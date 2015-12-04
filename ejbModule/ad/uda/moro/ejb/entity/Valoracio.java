@@ -2,6 +2,7 @@ package ad.uda.moro.ejb.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Class <code><b>Valoracio</b></code>. <br>
@@ -13,6 +14,7 @@ import javax.persistence.*;
 
 @Entity(name = "Valoracio")
 @Table(name = "valoracio")
+@XmlRootElement(name = "valoracio")
 @NamedQueries ( {
 	@NamedQuery (
 			name = "allValoracio",

@@ -144,6 +144,19 @@ public interface EnquestesServiceRemote {
 	 *             o o si hi ha un error de la capa de persistencia.
 	 */
 	public void deleteServei(int id) throws MoroException;
+	
+	/**
+	 * Borra una instancia de <code>Valoracio</code> de la capa de
+	 * persistencia.
+	 * 
+	 * @param id
+	 *            {Integer} L'identificador de la<code>Valoracio</code> a
+	 *            borrar.
+	 * @throws MoroException
+	 *             Si una Valoracio amb l'identificador especificat no existeix
+	 *             o o si hi ha un error de la capa de persistencia.
+	 */
+	public void deleteValoracio(int id) throws MoroException;
 
 	/**
 	 * Retorna una instancia d'<code>ActivitatDossier</code> amb l'identificador
@@ -248,7 +261,17 @@ public interface EnquestesServiceRemote {
 	 * @throws MoroException Llança MoroException
 	 */
 	public ActivitatDossier[] getServeisDossierList(int idDossier) throws MoroException;
-
+	
+	/**
+	 * Retorna una entitat de <code>Valoracio</code> a partir de un id donat
+	 * 
+	 * @param idValoracio
+	 *            PK de la valoracio que busquem
+	 * @return Entitat de Valoracio buscada
+	 * @throws MoroException Llança MoroException
+	 */
+	public Valoracio getValoracioById(int idValoracio) throws MoroException;
+	
 	/**
 	 * Retorna totes les intancies de <code>Valoracio</code> de la capa de
 	 * persitencia,
@@ -345,5 +368,19 @@ public interface EnquestesServiceRemote {
 	 *             persistència.
 	 */
 	public void updateServei(Servei servei) throws MoroException;
+	
+	/**
+	 * Actualitza una instancia de <code>Valoracio</code> a la capa de
+	 * persistència.
+	 * 
+	 * @param valoracio
+	 *            {Valoracio} La instancia de 
+	 *            <code>Valoracio</code> a actualitzar.
+	 * @throws MoroException
+	 *             Si la Valoracio conte informacio invalida o no
+	 *             existeix. També llança una Exception si hi ha un error de
+	 *             persistència.
+	 */
+	public void updateValoracio(Valoracio valoracio) throws MoroException;
 
 }

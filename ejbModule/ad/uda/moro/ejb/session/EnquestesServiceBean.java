@@ -166,7 +166,20 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 			throw new MoroException("Persistence error. Details: " + ex.getMessage());
 		}
 	}
-
+	
+	@Override
+	public void deleteValoracio(int id) throws MoroException{
+		// TODO mirar xq cony pete ! xD
+		// Verify parameter:
+		if (id < 0)throw new MoroException("The specified id parameter is null");
+		Valoracio valoracio = this.getValoracioById(id);
+		try {
+			em.remove(valoracio);
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
+	}
+	
 	@Override
 	public ActivitatDossier getActivitatDossierById(int id) throws MoroException {
 		// Verify parameter:
@@ -318,7 +331,18 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 			throw new MoroException("Persistence error. Details: " + ex.getMessage());
 		}
 	}
-
+	
+	public Valoracio getValoracioById(int idValoracio) throws MoroException{
+		// Verify parameter:
+		if (idValoracio < 0)
+			throw new MoroException("The parameter is negative !");
+		try {
+			return em.find(Valoracio.class, idValoracio);
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
+	}
+	
 	@Override
 	public Valoracio[] getValoracioList() throws MoroException {
 		Query query = em.createNamedQuery("allValoracio");
@@ -447,5 +471,20 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 	public void updateServei(Servei servei) throws MoroException {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void updateValoracio(Valoracio valoracio) throws MoroException {
+		// Check parameter:
+		if (valoracio == null)throw new MoroException("The specified Parametre parameter is null");
+		if (!valoracio.hasValidInformation())throw new MoroException("The information in the specified Valoracio parameter with id [" + valoracio.getId() + "] is invalid");
+
+		// Update the Dossier instance:
+		try {
+			em.merge(valoracio);
+		} catch (Exception ex) {
+			throw new MoroException("Persistence error. Details: " + ex.getMessage());
+		}
+		
 	}
 }
