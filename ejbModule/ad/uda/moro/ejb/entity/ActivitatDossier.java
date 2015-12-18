@@ -34,11 +34,11 @@ public class ActivitatDossier implements Serializable {
 	
 	@Id @GeneratedValue (strategy = GenerationType.IDENTITY) @Column(name ="id", length=11)  private int id;
 	
-	@ManyToOne (optional = false)
+	@ManyToOne (optional = true)
 	@JoinColumn (name = "idDossier")
 	private Dossier idDossier;
 	
-	@ManyToOne (optional = false)
+	@ManyToOne (optional = true)
 	@JoinColumn (name = "idServei")
 	private Servei idServei;
 	

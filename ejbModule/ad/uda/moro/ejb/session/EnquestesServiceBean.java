@@ -67,7 +67,7 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 			throw new MoroException("The specified parametre parameter is null");
 		if (!parametre.hasValidInformation())
 			throw new MoroException("The specified parametre parameter contains invalid information");
-	
+
 		// Add the instance:
 		try {
 			em.persist(parametre);
@@ -131,6 +131,20 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 			throw new MoroException("The specified id parameter is null");
 		Dossier dossier = this.getDossierById(id);
 
+		// Hem de borrar tots els elements relacionats amb el dossier a eliminar
+		// !
+		ActivitatDossier[] a = this.getActivitatDossierList();
+		for (int i = 0; i < a.length; i++) {
+			if (a[i].getIdDossier().getId() == id)
+				em.remove(a[i]);
+		}
+
+		Valoracio[] v = this.getValoracioList();
+		for (int i = 0; i < v.length; i++) {
+			if (v[i].getIdDossier().getId() == id)
+				em.remove(v[i]);
+		}
+
 		try {
 			em.remove(dossier);
 		} catch (Exception ex) {
@@ -166,12 +180,13 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 			throw new MoroException("Persistence error. Details: " + ex.getMessage());
 		}
 	}
-	
+
 	@Override
-	public void deleteValoracio(int id) throws MoroException{
+	public void deleteValoracio(int id) throws MoroException {
 		// TODO mirar xq cony pete ! xD
 		// Verify parameter:
-		if (id < 0)throw new MoroException("The specified id parameter is null");
+		if (id < 0)
+			throw new MoroException("The specified id parameter is null");
 		Valoracio valoracio = this.getValoracioById(id);
 		try {
 			em.remove(valoracio);
@@ -179,7 +194,7 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 			throw new MoroException("Persistence error. Details: " + ex.getMessage());
 		}
 	}
-	
+
 	@Override
 	public ActivitatDossier getActivitatDossierById(int id) throws MoroException {
 		// Verify parameter:
@@ -331,8 +346,8 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 			throw new MoroException("Persistence error. Details: " + ex.getMessage());
 		}
 	}
-	
-	public Valoracio getValoracioById(int idValoracio) throws MoroException{
+
+	public Valoracio getValoracioById(int idValoracio) throws MoroException {
 		// Verify parameter:
 		if (idValoracio < 0)
 			throw new MoroException("The parameter is negative !");
@@ -342,7 +357,7 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 			throw new MoroException("Persistence error. Details: " + ex.getMessage());
 		}
 	}
-	
+
 	@Override
 	public Valoracio[] getValoracioList() throws MoroException {
 		Query query = em.createNamedQuery("allValoracio");
@@ -455,8 +470,8 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 		if (parametre == null)
 			throw new MoroException("The specified Parametre parameter is null");
 		if (!parametre.hasValidInformation())
-			throw new MoroException(
-					"The information in the specified Parametre parameter with id [" + parametre.getId() + "] is invalid");
+			throw new MoroException("The information in the specified Parametre parameter with id [" + parametre.getId()
+					+ "] is invalid");
 
 		// Update the Dossier instance:
 		try {
@@ -476,8 +491,11 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 	@Override
 	public void updateValoracio(Valoracio valoracio) throws MoroException {
 		// Check parameter:
-		if (valoracio == null)throw new MoroException("The specified Parametre parameter is null");
-		if (!valoracio.hasValidInformation())throw new MoroException("The information in the specified Valoracio parameter with id [" + valoracio.getId() + "] is invalid");
+		if (valoracio == null)
+			throw new MoroException("The specified Parametre parameter is null");
+		if (!valoracio.hasValidInformation())
+			throw new MoroException("The information in the specified Valoracio parameter with id [" + valoracio.getId()
+					+ "] is invalid");
 
 		// Update the Dossier instance:
 		try {
@@ -485,6 +503,6 @@ public class EnquestesServiceBean implements EnquestesServiceRemote {
 		} catch (Exception ex) {
 			throw new MoroException("Persistence error. Details: " + ex.getMessage());
 		}
-		
+
 	}
 }
