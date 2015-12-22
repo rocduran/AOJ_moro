@@ -42,10 +42,17 @@ public class Servei implements Serializable {
 	 * @see ad.uda.moro.CommonUtilities
 	 */
 	public Servei(int idTipus, String descripcio) {
+		super();
 		this.idTipus = idTipus;
 		this.descripcio = descripcio;
 	}
 	
+	public Servei(int id, int idTipus, String descripcio) {
+		super();
+		this.id = id;
+		this.idTipus = idTipus;
+		this.descripcio = descripcio;
+	}
 	/**
 	 * Constructor method <blockquote><b>Servei</b></blockquote>  sense parametres.
 	 */
@@ -57,6 +64,10 @@ public class Servei implements Serializable {
 	 */
 	public int getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	/**

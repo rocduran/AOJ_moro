@@ -53,6 +53,13 @@ public class ActivitatDossier implements Serializable {
 		this.idServei = idServei;
 	}
 	
+	public ActivitatDossier(int id, Dossier idDossier, Servei idServei) {
+		super();
+		this.id = id;
+		this.idDossier = idDossier;
+		this.idServei = idServei;
+	}
+	
 	/**
 	 * Constructor method de <blockquote><b>ActivitatDossier</b></blockquote> sense parametres:
 	 */
@@ -64,6 +71,10 @@ public class ActivitatDossier implements Serializable {
 	 */
 	public int getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	/**

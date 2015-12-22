@@ -45,6 +45,13 @@ public class Dossier implements Serializable {
 		this.descripcio = descripcio;
 	}
 	
+	public Dossier(int id, int preu, String descripcio) {
+		super();
+		this.id = id;
+		this.preu = preu;
+		this.descripcio = descripcio;
+	}
+	
 	/**
 	 * Constructor method de <blockquote><b>Dossier</b></blockquote> sense parametres:
 	 */
@@ -58,6 +65,10 @@ public class Dossier implements Serializable {
 		return id;
 	}
 	
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	/**
 	 * Getter del preu del dossier
 	 * @return {Integer} Preu del dossier
