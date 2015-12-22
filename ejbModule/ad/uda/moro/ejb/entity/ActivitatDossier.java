@@ -108,7 +108,7 @@ public class ActivitatDossier implements Serializable {
 	}
 	
 	public boolean hasValidInformation() {
-		return (this.idDossier.getId() >= 0 & this.idServei.getId() >= 0);
+		return (this.idDossier.hasValidInformation() & this.idServei.hasValidInformation());
 	}
 	
 	public boolean isValidActivitatDossierId() {
